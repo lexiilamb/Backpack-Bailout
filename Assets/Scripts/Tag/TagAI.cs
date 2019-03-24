@@ -12,13 +12,19 @@ public class TagAI : MonoBehaviour
     private float roomZupperValue = 16.5f;
 
     //parameters for RandomNavSphere for NPC to wander when player is in the safe zone
-    float maxRadius = 40.0f;
+    public float maxRadius = 40.0f;
 
     GameObject player;
     NavMeshAgent tagAI;
     Animator animCon;
     public bool safeZone = false;
 
+    //add view cone 
+    FieldOfView target;
+
+    //acceleration speeds
+    float standardSpeed = 6.0f;
+    float acceleratedSpeed = 10.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,37 +39,59 @@ public class TagAI : MonoBehaviour
         }
 
         tagAI = GetComponent<NavMeshAgent>();
+        target = GetComponent<FieldOfView>();
     }
 
-    // Update is called once per frame
+    //new Update with view Cone implementation
     void Update()
     {
         if (player != null)
         {
-            //if safe zone then wander
-            if (safeZone)
-            { 
-                Vector3 newPosition = RandomNavSphere(tagAI.transform.position, maxRadius);
-                
-                tagAI.destination = newPosition;
-
+            //check if the player is in the safezone
+            if(safeZone)
+            {
+                tagAI.acceleration = standardSpeed;
+                //if the player is in the safe zone then walk around looking for the player
                 animCon.SetBool("isRunning", false);
                 animCon.SetBool("isPunchable", false);
                 animCon.SetBool("isWalkable", true);
+                tagAI.destination = RandomNavSphere(tagAI.transform.position, maxRadius);
             }
-            else if (tagAI.remainingDistance != Mathf.Infinity && tagAI.remainingDistance <= tagAI.stoppingDistance)
+            else 
             {
-                tagAI.destination = player.transform.position;
-                animCon.SetBool("isRunning", false);
-                animCon.SetBool("isPunchable", true);
-                animCon.SetBool("isWalkable", false);
-            }
-            else
-            {
-                animCon.SetBool("isRunning", true);
-                animCon.SetBool("isPunchable", false);
-                animCon.SetBool("isWalkable", false);
-                tagAI.destination = player.transform.position;
+                //if player is not in the safezone then check if the player is viewable
+                if(target.viewable)
+                {
+                    //if the player is viewable and within distance then punch
+                    if (tagAI.remainingDistance <= tagAI.stoppingDistance)
+                    {
+                        tagAI.acceleration = standardSpeed;
+                        animCon.SetBool("isRunning", false);
+                        animCon.SetBool("isPunchable", true);
+                    }
+                    //if the player is viewable and not within distance then run with an accelerated speed
+                    else
+                    {
+                        tagAI.acceleration = acceleratedSpeed;
+
+                        animCon.SetBool("isRunning", true);
+                        animCon.SetBool("isPunchable", false);
+                    }
+
+                    animCon.SetBool("isWalkable", false);
+                    tagAI.destination = player.transform.position;
+                }
+                else
+                {
+                    //if player is not viewable then walk towards the player and set chad's acceleration to standard acceleration
+                    tagAI.acceleration = standardSpeed;
+
+                    animCon.SetBool("isRunning", false);
+                    animCon.SetBool("isPunchable", false);
+                    animCon.SetBool("isWalkable", true);
+                    tagAI.destination = player.transform.position;
+                }
+
             }
         }
 
