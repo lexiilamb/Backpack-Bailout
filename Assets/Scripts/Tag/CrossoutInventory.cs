@@ -28,7 +28,7 @@ public class CrossoutInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void hideAllUI(GameObject objectGroup)

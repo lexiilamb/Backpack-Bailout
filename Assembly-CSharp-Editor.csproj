@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5C963A4D-93B8-883F-C509-C2B53CAE55FF}</ProjectGuid>
+    <ProjectGuid>{17421210-F70A-291C-F7C9-90A5977407DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -88,20 +88,21 @@
      <Compile Include="Assets\Prefabs\Classroom\PostProcessing\Editor\Utils\FxStyles.cs" />
      <Compile Include="Assets\Prefabs\Classroom\PostProcessing\Editor\Utils\ReflectionUtils.cs" />
      <Compile Include="Assets\Prefabs\Classroom\Scripts\Editor\ClockAnimInspector.cs" />
+     <Compile Include="Assets\Scripts\Tag\Editor\FieldOfViewEditor.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -338,19 +339,19 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Purchasing">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -709,11 +710,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{77C9D202-0B15-6B69-033E-0F3268F6BD89}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{4C33F8DC-5B08-4569-6E86-FE52200D1E5C}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
     <ProjectReference Include="NavMeshComponentsEditor.csproj">
-      <Project>{77352E3D-CD19-365E-8794-497AE9ABA876}</Project>      <Name>NavMeshComponentsEditor</Name>    </ProjectReference>
+      <Project>{AC127B4A-DE2C-A9A2-3E52-C298C4939696}</Project>      <Name>NavMeshComponentsEditor</Name>    </ProjectReference>
     <ProjectReference Include="NavMeshComponents.csproj">
-      <Project>{23ADC296-D9F5-493F-35C1-A08AA0A23B3C}</Project>      <Name>NavMeshComponents</Name>    </ProjectReference>
+      <Project>{B8B8C42A-AB5D-9BD6-9CCE-645D0F5BFE01}</Project>      <Name>NavMeshComponents</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

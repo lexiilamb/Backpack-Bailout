@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{77C9D202-0B15-6B69-033E-0F3268F6BD89}</ProjectGuid>
+    <ProjectGuid>{4C33F8DC-5B08-4569-6E86-FE52200D1E5C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -127,7 +127,9 @@
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\standingNPC.cs" />
      <Compile Include="Assets\Scripts\Tag\CollectObject.cs" />
+     <Compile Include="Assets\Scripts\Tag\CrossoutInventory.cs" />
      <Compile Include="Assets\Scripts\Tag\DisplayHalo.cs" />
+     <Compile Include="Assets\Scripts\Tag\FieldOfView.cs" />
      <Compile Include="Assets\Scripts\Tag\GenerateObjects.cs" />
      <Compile Include="Assets\Scripts\Tag\PlaceObject.cs" />
      <Compile Include="Assets\Scripts\Tag\RandomShelves.cs" />
@@ -183,19 +185,19 @@
      <None Include="Assets\Prefabs\Classroom\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
      <None Include="Assets\Ultra Skybox Fog\Textures\Readme.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -399,13 +401,13 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>C:/Users/lexii/Documents/GitHub/MyFirstUnityGame/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>C:/Users/Lexii/Documents/GitHub/Backpack-Bailout/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -755,9 +757,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="NavMeshComponentsEditor.csproj">
-      <Project>{77352E3D-CD19-365E-8794-497AE9ABA876}</Project>      <Name>NavMeshComponentsEditor</Name>    </ProjectReference>
+      <Project>{AC127B4A-DE2C-A9A2-3E52-C298C4939696}</Project>      <Name>NavMeshComponentsEditor</Name>    </ProjectReference>
     <ProjectReference Include="NavMeshComponents.csproj">
-      <Project>{23ADC296-D9F5-493F-35C1-A08AA0A23B3C}</Project>      <Name>NavMeshComponents</Name>    </ProjectReference>
+      <Project>{B8B8C42A-AB5D-9BD6-9CCE-645D0F5BFE01}</Project>      <Name>NavMeshComponents</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
