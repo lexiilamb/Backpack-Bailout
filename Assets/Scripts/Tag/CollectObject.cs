@@ -6,7 +6,7 @@ using UnityEngine;
 public class CollectObject : MonoBehaviour
 {
     public AudioSource _AudioSource;
-    
+
     private IEnumerator collectedObject;
 
     // Prevent objects from being counted twice
@@ -21,7 +21,7 @@ public class CollectObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator destroyObject()
@@ -68,7 +68,7 @@ public class CollectObject : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             // Prevents multiple collection of the same object
-            if(canDestroyObject)
+            if (canDestroyObject)
             {
                 /*
                 // Player must place each item in storage before collecting a new item
@@ -82,18 +82,22 @@ public class CollectObject : MonoBehaviour
                 // Check if tag can be collected
                 if (this.gameObject.tag == "Tablet" && GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canCollectTablets)
                 {
+                    GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().crossoutTablets();
                     startDestroyCoroutine();
                 }
                 if (this.gameObject.tag == "Calculators" && GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canCollectCalculators)
                 {
+                    GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().crossoutCalculators();
                     startDestroyCoroutine();
                 }
                 if (this.gameObject.tag == "Notebooks" && GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canCollectNotebooks)
                 {
+                    GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().crossoutNotebooks();
                     startDestroyCoroutine();
                 }
                 if (this.gameObject.tag == "Laptop" && GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canCollectLaptops)
                 {
+                    GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().crossoutLaptops();
                     startDestroyCoroutine();
                 }
             }

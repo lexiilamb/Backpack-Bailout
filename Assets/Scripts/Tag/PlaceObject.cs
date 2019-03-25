@@ -18,6 +18,11 @@ public class PlaceObject : MonoBehaviour
     public GameObject notebookInventory;
     public GameObject laptopInventory;
 
+    public GameObject xTabletsUI;
+    public GameObject xCalculatorsUI;
+    public GameObject xNotebooksUI;
+    public GameObject xLaptopsUI;
+
     // Indecies 
     public int tabletCounter;
     public int calculatorCounter;
@@ -54,6 +59,11 @@ public class PlaceObject : MonoBehaviour
         hideAll(calculators);
         hideAll(notebooks);
         hideAll(laptops);
+
+        xTabletsUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutTablets;
+        xCalculatorsUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutCalculators;
+        xNotebooksUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutNotebooks;
+        xLaptopsUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutLaptops;
     }
 
     // Update is called once per frame
@@ -65,21 +75,22 @@ public class PlaceObject : MonoBehaviour
     IEnumerator placeThisObject(GameObject objects)
     {
         // Allow another object to be collected later 
-        canCollectObject = true; 
+        canCollectObject = true;
 
         if (objects.tag == "TabletShelf")
         {
             // Activate enable object in storage shelf
             objects.transform.GetChild(tabletCounter).gameObject.SetActive(true);
             // Disable inventory icon on UI
-            tabInventory.transform.GetChild(tabletCounter+1).gameObject.SetActive(false);
+            tabInventory.transform.GetChild(tabletCounter + 1).gameObject.SetActive(false);
+            xTabletsUI.transform.GetChild(tabletCounter).gameObject.SetActive(false);
             tabletCounter++;
 
             // If finished collecting 
-            if(tabletCounter == numToDeactivate)
+            if (tabletCounter == numToDeactivate)
             {
                 // Only allow a full shelf to enable AJ category switch once
-                if(!checkedT)
+                if (!checkedT)
                 {
                     // Disable current category dialogue and allow new category to be picked
                     GameObject.FindWithTag("AJ").GetComponent<standingAJ>().findTables = false;
@@ -93,7 +104,8 @@ public class PlaceObject : MonoBehaviour
             // Activate enable object in storage shelf
             objects.transform.GetChild(calculatorCounter).gameObject.SetActive(true);
             // Disable inventory icon on UI
-            calcInventory.transform.GetChild(calculatorCounter+1).gameObject.SetActive(false);
+            calcInventory.transform.GetChild(calculatorCounter + 1).gameObject.SetActive(false);
+            xCalculatorsUI.transform.GetChild(calculatorCounter).gameObject.SetActive(false);
             calculatorCounter++;
 
             // If finished collecting 
@@ -114,7 +126,8 @@ public class PlaceObject : MonoBehaviour
             // Activate enable object in storage shelf
             objects.transform.GetChild(notebookCounter).gameObject.SetActive(true);
             // Disable inventory icon on UI
-            notebookInventory.transform.GetChild(notebookCounter+1).gameObject.SetActive(false);
+            notebookInventory.transform.GetChild(notebookCounter + 1).gameObject.SetActive(false);
+            xNotebooksUI.transform.GetChild(notebookCounter).gameObject.SetActive(false);
             notebookCounter++;
 
             // If finished collecting 
@@ -136,6 +149,7 @@ public class PlaceObject : MonoBehaviour
             objects.transform.GetChild(laptopCounter).gameObject.SetActive(true);
             // Disable inventory icon on UI
             laptopInventory.transform.GetChild(laptopCounter + 1).gameObject.SetActive(false);
+            xLaptopsUI.transform.GetChild(laptopCounter).gameObject.SetActive(false);
             laptopCounter++;
 
             // If finished collecting 
@@ -234,13 +248,13 @@ public class PlaceObject : MonoBehaviour
 
     public void checkIfWon()
     {
-        if(tabletCounter == numToDeactivate)
+        if (tabletCounter == numToDeactivate)
         {
-            if(calculatorCounter == numToDeactivate)
+            if (calculatorCounter == numToDeactivate)
             {
-                if(notebookCounter == numToDeactivate)
+                if (notebookCounter == numToDeactivate)
                 {
-                    if(laptopCounter == numToDeactivate)
+                    if (laptopCounter == numToDeactivate)
                     {
                         GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().gameWon();
                     }
