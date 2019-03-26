@@ -11,7 +11,7 @@ public class GenerateObjects : MonoBehaviour
     public GameObject laptops;
 
     private int typesOfObjects = 4;
-    private int amountOfEachObject = 6;
+    private int amountOfEachObject = 10;
     public int numToActivate = 3;
 
     // Start is called before the first frame update

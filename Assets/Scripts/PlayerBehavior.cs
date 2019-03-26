@@ -16,7 +16,6 @@ public class PlayerBehavior : MonoBehaviour
     public Text countText;
 
     private Rigidbody player;
-    public static float currentTime = 0.0f;
     public int count;
 
     // NPC interaction flags
@@ -37,8 +36,6 @@ public class PlayerBehavior : MonoBehaviour
 
     void Update()
     {
-        currentTime += Time.deltaTime;
-        setTime.text = "Time: " + currentTime;
 
         //isGameOver();
     }
