@@ -57353,8 +57353,8 @@ PrefabInstance:
     - target: {fileID: 93554924350604005, guid: 53e2533460bc9594e848ad67e4dd3626,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Sup. Collect all of the TABLETS in the Administration Office and put
-        them in storage at the back of the room.
+      value: Collect all of the TABLETS in the Administration Office and put them
+        in storage at the back of the room.
       objectReference: {fileID: 0}
     - target: {fileID: 8595956888333456503, guid: 53e2533460bc9594e848ad67e4dd3626,
         type: 3}
@@ -57375,8 +57375,8 @@ PrefabInstance:
     - target: {fileID: 8595956888333456503, guid: 53e2533460bc9594e848ad67e4dd3626,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Sup. Collect all of the CALCULATORS in the Administration Office and
-        put them in storage at the back of the room.
+      value: Collect all of the CALCULATORS in the Administration Office and put them
+        in storage at the back of the room.
       objectReference: {fileID: 0}
     - target: {fileID: 93554924882406087, guid: 53e2533460bc9594e848ad67e4dd3626,
         type: 3}
@@ -57396,8 +57396,8 @@ PrefabInstance:
     - target: {fileID: 93554924882406087, guid: 53e2533460bc9594e848ad67e4dd3626,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Sup. Collect all of the NOTEBOOKS in the Administration Office and put
-        them in storage at the back of the room.
+      value: Collect all of the NOTEBOOKS in the Administration Office and put them
+        in storage at the back of the room.
       objectReference: {fileID: 0}
     - target: {fileID: 93554924882406080, guid: 53e2533460bc9594e848ad67e4dd3626,
         type: 3}
@@ -57417,8 +57417,8 @@ PrefabInstance:
     - target: {fileID: 93554924882406080, guid: 53e2533460bc9594e848ad67e4dd3626,
         type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Sup. Collect all of the LAPTOPS in the Administration Office and put
-        them in storage at the back of the room.
+      value: Collect all of the LAPTOPS in the Administration Office and put them
+        in storage at the back of the room.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53e2533460bc9594e848ad67e4dd3626, type: 3}
