@@ -3035,11 +3035,6 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 2592034849113854720, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
-        type: 3}
-      propertyPath: m_Text
-      value: '[F] to chat'
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9d2a80dc2b96014abdf41b0e52bef6a, type: 3}
 --- !u!114 &104261767 stripped
@@ -35108,6 +35103,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1208692045}
     m_Modifications:
+    - target: {fileID: 1463368340771084, guid: 4bc48771517f84804bfe1e21d8bbdbe5, type: 3}
+      propertyPath: m_Name
+      value: Calculator
+      objectReference: {fileID: 0}
     - target: {fileID: 4536424364635226, guid: 4bc48771517f84804bfe1e21d8bbdbe5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.177498
@@ -35155,10 +35154,6 @@ PrefabInstance:
     - target: {fileID: 4536424364635226, guid: 4bc48771517f84804bfe1e21d8bbdbe5, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1463368340771084, guid: 4bc48771517f84804bfe1e21d8bbdbe5, type: 3}
-      propertyPath: m_Name
-      value: Calculator
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bc48771517f84804bfe1e21d8bbdbe5, type: 3}
@@ -46187,6 +46182,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8506804555027973969, guid: 8097e778cb45d4d4797324ab831a2daa,
+        type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7486909160341166032, guid: 8097e778cb45d4d4797324ab831a2daa,
         type: 3}
       propertyPath: m_Size.z
@@ -46206,11 +46206,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: 0.4852449
-      objectReference: {fileID: 0}
-    - target: {fileID: 8506804555027973969, guid: 8097e778cb45d4d4797324ab831a2daa,
-        type: 3}
-      propertyPath: m_Volume
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8097e778cb45d4d4797324ab831a2daa, type: 3}
