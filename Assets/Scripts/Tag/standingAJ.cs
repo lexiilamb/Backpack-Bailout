@@ -57,11 +57,11 @@ public class standingAJ : MonoBehaviour
         bool pickedOne = false;
 
         // If all categories asked for
-        if(activeArray[0] && activeArray[1] && activeArray[2] && activeArray[3])
-        {
-            pickedOne = true;
-            finishedCollecting = true;
-        }
+        //if(activeArray[0] && activeArray[1] && activeArray[2] && activeArray[3])
+        //{
+           //pickedOne = true;
+            //finishedCollecting = true;
+        //}
 
         if(canPickNextCategory)
         {
