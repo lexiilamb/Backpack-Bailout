@@ -11,8 +11,6 @@ public class PlayerBehavior : MonoBehaviour
     public float speed = 1.0f;
 
     public Canvas winCanvas;
-    public Canvas loseCanvas;
-    public Text setTime;
     public Text countText;
 
     private Rigidbody player;
@@ -31,7 +29,6 @@ public class PlayerBehavior : MonoBehaviour
 
         // Win/lose states disabled
         winCanvas.gameObject.SetActive(false);
-        loseCanvas.gameObject.SetActive(false);
     }
 
     void Update()
@@ -40,21 +37,6 @@ public class PlayerBehavior : MonoBehaviour
         //isGameOver();
     }
 
-    //private void isGameOver()
-    //{
-    //    // Lose game
-    //    if (currentTime > 10)
-    //    {
-    //        // Freeze game
-    //        Time.timeScale = 0;
-    //        loseCanvas.gameObject.SetActive(true);
-    //        if (Input.GetButtonDown("Fire1"))
-    //        {
-    //            SceneManager.LoadScene(3);
-    //            //Initiate.Fade(scene, loadToColor, speed);
-    //        }
-    //    }
-    //}
 
     public void gameWon()
     {
@@ -62,12 +44,6 @@ public class PlayerBehavior : MonoBehaviour
         // Freeze game and display win canvas
         Time.timeScale = 0f;
         winCanvas.gameObject.SetActive(true);
-    }
-
-    // Must use "Collider" as variable for trigger functions
-    void OnTriggerEnter(Collider collision)
-    {
- 
     }
 
     public void SetCountText()

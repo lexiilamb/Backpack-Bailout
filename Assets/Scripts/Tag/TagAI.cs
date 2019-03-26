@@ -6,10 +6,10 @@ using UnityEngine.AI;
 public class TagAI : MonoBehaviour
 {
     //walkable dimension of the room
-    private float roomXlowerValue = -9.1f;
-    private float roomXupperValue = 48f;
-    private float roomZlowerValue = -9.9f;
-    private float roomZupperValue = 16.5f;
+    //private float roomXlowerValue = -9.1f;
+    //private float roomXupperValue = 48f;
+    //private float roomZlowerValue = -9.9f;
+    //private float roomZupperValue = 16.5f;
 
     //parameters for RandomNavSphere for NPC to wander when player is in the safe zone
     public float maxRadius = 40.0f;
@@ -25,6 +25,9 @@ public class TagAI : MonoBehaviour
     //acceleration speeds
     float standardSpeed = 6.0f;
     float acceleratedSpeed = 10.0f;
+
+    public bool removeLife = false;
+    public bool checkReset = true;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +71,13 @@ public class TagAI : MonoBehaviour
                         tagAI.acceleration = standardSpeed;
                         animCon.SetBool("isRunning", false);
                         animCon.SetBool("isPunchable", true);
+
+                        // Remove life and reset player
+                        if(checkReset)
+                        {
+                            checkReset = false;
+                            removeLife = true;
+                        }
                     }
                     //if the player is viewable and not within distance then run with an accelerated speed
                     else
@@ -93,6 +103,12 @@ public class TagAI : MonoBehaviour
                 }
 
             }
+        }
+
+        if(removeLife)
+        {
+            GameObject.FindWithTag("CanvasHearts").GetComponent<PlayerLives>().ResetPlayer();
+            removeLife = false;
         }
 
     }

@@ -25,6 +25,8 @@ TagManager:
   - AJ
   - Non-Walkable
   - Chad
+  - inventoryUI
+  - CanvasHearts
   layers:
   - Default
   - TransparentFX
