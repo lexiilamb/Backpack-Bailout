@@ -19,15 +19,14 @@ public class TagAI : MonoBehaviour
     Animator animCon;
     public bool safeZone = false;
 
+    public bool chadCaughtPlayer = false;
+
     //add view cone 
     FieldOfView target;
 
     //acceleration speeds
     float standardSpeed = 6.0f;
     float acceleratedSpeed = 10.0f;
-
-    public bool removeLife = false;
-    public bool checkReset = true;
 
     // Start is called before the first frame update
     void Start()
@@ -72,12 +71,8 @@ public class TagAI : MonoBehaviour
                         animCon.SetBool("isRunning", false);
                         animCon.SetBool("isPunchable", true);
 
-                        // Remove life and reset player
-                        if(checkReset)
-                        {
-                            checkReset = false;
-                            removeLife = true;
-                        }
+                        // Take away a life
+                        chadCaughtPlayer = true;
                     }
                     //if the player is viewable and not within distance then run with an accelerated speed
                     else
@@ -104,13 +99,6 @@ public class TagAI : MonoBehaviour
 
             }
         }
-
-        if(removeLife)
-        {
-            GameObject.FindWithTag("CanvasHearts").GetComponent<PlayerLives>().ResetPlayer();
-            removeLife = false;
-        }
-
     }
 
     //generate random point in a sphere and move to that point
