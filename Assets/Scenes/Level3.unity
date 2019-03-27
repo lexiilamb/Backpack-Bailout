@@ -18177,6 +18177,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2132580395654857132, guid: 31a82d03ad4f65d41a57682c81aa661d,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132580395654857132, guid: 31a82d03ad4f65d41a57682c81aa661d,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 1878657829}
     - target: {fileID: 4677445246308277811, guid: 31a82d03ad4f65d41a57682c81aa661d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18307,16 +18317,6 @@ PrefabInstance:
       propertyPath: pauseMenuUI
       value: 
       objectReference: {fileID: 1817009493}
-    - target: {fileID: 2132580395654857132, guid: 31a82d03ad4f65d41a57682c81aa661d,
-        type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2132580395654857132, guid: 31a82d03ad4f65d41a57682c81aa661d,
-        type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
-      value: 
-      objectReference: {fileID: 1878657829}
     - target: {fileID: 7930793769336956342, guid: 31a82d03ad4f65d41a57682c81aa661d,
         type: 3}
       propertyPath: pauseMenuUI
@@ -59203,7 +59203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -59223,7 +59223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score:'
+  m_Text: 'Time:'
 --- !u!1001 &7606323177335998175
 PrefabInstance:
   m_ObjectHideFlags: 0
