@@ -19,6 +19,7 @@ public class PlayerBehavior : MonoBehaviour
     // NPC interaction flags
     public bool claireAskedForHelp = false;
     public bool wonPong = false;
+    public bool wonGame = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,16 +35,20 @@ public class PlayerBehavior : MonoBehaviour
     void Update()
     {
 
-        //isGameOver();
+        if(wonGame)
+        {
+            wonGame = false;
+            GameWon();
+        }
     }
 
 
-    public void gameWon()
+    public void GameWon()
     {
         // Play win sound/audio????
         // Freeze game and display win canvas
-        Time.timeScale = 0f;
         winCanvas.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void SetCountText()

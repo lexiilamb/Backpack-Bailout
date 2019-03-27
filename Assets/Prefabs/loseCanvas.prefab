@@ -504,6 +504,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numCollected: {fileID: 7503293886186770108}
   totalCollected: 0
+  totalTablets: 0
+  totalCalculators: 0
+  totalNotebooks: 0
+  totalLaptops: 0
 --- !u!1 &6282121877748616928
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +543,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6267694109750483748
 CanvasRenderer:
@@ -582,7 +586,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Final Time
+  m_Text: Final score
 --- !u!1 &6411286593729893618
 GameObject:
   m_ObjectHideFlags: 0

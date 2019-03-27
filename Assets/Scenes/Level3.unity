@@ -32634,7 +32634,7 @@ PrefabInstance:
     - target: {fileID: 647328130407952634, guid: a6a2dddf4364b4a48a1b7de657d096c6,
         type: 3}
       propertyPath: m_Volume
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 647328130407952634, guid: a6a2dddf4364b4a48a1b7de657d096c6,
         type: 3}
@@ -59190,7 +59190,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -4}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7409481069616735254
 MonoBehaviour:
@@ -59246,7 +59246,7 @@ PrefabInstance:
     - target: {fileID: 7606323178540180096, guid: 67ecb025a1ac14104b709f6a9623ad31,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24
+      value: 31.73
       objectReference: {fileID: 0}
     - target: {fileID: 7606323178540180096, guid: 67ecb025a1ac14104b709f6a9623ad31,
         type: 3}
@@ -60010,6 +60010,11 @@ PrefabInstance:
       propertyPath: myEventSystem
       value: 
       objectReference: {fileID: 1712718681}
+    - target: {fileID: 963052776319746333, guid: 2449bcb3d0e3e8b4aae66986c529d1c6,
+        type: 3}
+      propertyPath: m_Text
+      value: Final
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2449bcb3d0e3e8b4aae66986c529d1c6, type: 3}
 --- !u!114 &8835686222803441340

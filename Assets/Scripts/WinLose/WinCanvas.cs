@@ -6,20 +6,25 @@ using UnityEngine.UI;
 public class WinCanvas : MonoBehaviour
 {
     public Text setTime;
-    public static float finalTime = 0.0f;
+    public float finalTime = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        finalTime = GameObject.FindWithTag("Player").GetComponent<PlaceObject>().currentTime;
-
-        setTime.text = "Your Time: " + finalTime;
+        DisplayFinalTime();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //finalTime = GameObject.FindWithTag("Player").GetComponent<PlaceObject>().currentTime;
-        //setTime.text = "Your Time: " + finalTime;
+
+    }
+
+    void DisplayFinalTime()
+    {
+        finalTime = GameObject.FindWithTag("Player").GetComponent<PlaceObject>().currentTime;
+        Debug.Log(finalTime);
+
+        setTime.text = "Your Time: " + finalTime.ToString("F2") + " seconds";
     }
 }

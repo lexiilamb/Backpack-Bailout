@@ -72,9 +72,9 @@ public class PlaceObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkIfWon();
         currentTime += Time.deltaTime;
-        setTime.text = "Time: " + currentTime;
+        setTime.text = "Time: " + currentTime.ToString("F2") + " seconds";
+        checkIfWon();
     }
 
     IEnumerator placeThisObject(GameObject objects)
@@ -236,6 +236,23 @@ public class PlaceObject : MonoBehaviour
         }
     }
 
+    public void checkIfWon()
+    {
+        if (tabletCounter == numToDeactivate)
+        {
+            if (calculatorCounter == numToDeactivate)
+            {
+                if (notebookCounter == numToDeactivate)
+                {
+                    if (laptopCounter == numToDeactivate)
+                    {
+                        GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().wonGame = true;
+                    }
+                }
+            }
+        }
+    }
+
     void OnTriggerExit(Collider collision)
     {
 
@@ -249,22 +266,5 @@ public class PlaceObject : MonoBehaviour
             hideObject.SetActive(false);
         }
 
-    }
-
-    public void checkIfWon()
-    {
-        if (tabletCounter == numToDeactivate)
-        {
-            if (calculatorCounter == numToDeactivate)
-            {
-                if (notebookCounter == numToDeactivate)
-                {
-                    if (laptopCounter == numToDeactivate)
-                    {
-                        GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().gameWon();
-                    }
-                }
-            }
-        }
     }
 }
