@@ -18302,11 +18302,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 3040432969657877593, guid: 31a82d03ad4f65d41a57682c81aa661d,
-        type: 3}
-      propertyPath: pauseMenuUI
-      value: 
-      objectReference: {fileID: 1817009493}
     - target: {fileID: 2132580395654857132, guid: 31a82d03ad4f65d41a57682c81aa661d,
         type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -18317,6 +18312,11 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
       objectReference: {fileID: 1878657829}
+    - target: {fileID: 3040432969657877593, guid: 31a82d03ad4f65d41a57682c81aa661d,
+        type: 3}
+      propertyPath: pauseMenuUI
+      value: 
+      objectReference: {fileID: 1817009493}
     - target: {fileID: 7930793769336956342, guid: 31a82d03ad4f65d41a57682c81aa661d,
         type: 3}
       propertyPath: pauseMenuUI
@@ -59312,6 +59312,10 @@ PrefabInstance:
       propertyPath: safeZone
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 886609284, guid: 67ecb025a1ac14104b709f6a9623ad31, type: 3}
+      propertyPath: maxRadius
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ecb025a1ac14104b709f6a9623ad31, type: 3}
 --- !u!1 &7606323177335998176 stripped
@@ -59330,7 +59334,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7fe56958cfaadd5468ff51d4cad51452, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 02cbce3cc778144778e48698df7259a6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -59341,7 +59345,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 10
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
