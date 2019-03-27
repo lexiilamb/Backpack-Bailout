@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlaceObject : MonoBehaviour
 {
+    public float currentTime = 0.0f;
+    public Text setTime;
+
     // Storage objects
     public GameObject tablets;
     public GameObject calculators;
@@ -70,6 +73,8 @@ public class PlaceObject : MonoBehaviour
     void Update()
     {
         checkIfWon();
+        currentTime += Time.deltaTime;
+        setTime.text = "Time: " + currentTime;
     }
 
     IEnumerator placeThisObject(GameObject objects)

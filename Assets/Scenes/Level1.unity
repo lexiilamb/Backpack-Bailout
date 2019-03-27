@@ -890,11 +890,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3081859109584733919, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
+    - target: {fileID: 3545048347780110775, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
         type: 3}
-      propertyPath: myButton
-      value: 
-      objectReference: {fileID: 266563809}
+      propertyPath: m_Name
+      value: Dialogue System
+      objectReference: {fileID: 0}
+    - target: {fileID: 3545048347780110775, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4140705684726556947, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -955,17 +960,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1541021550223372107, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
+    - target: {fileID: 2592034849113854720, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3545048347780110775, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
+    - target: {fileID: 2592034849113854720, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
         type: 3}
-      propertyPath: m_Name
-      value: Dialogue System
+      propertyPath: m_Text
+      value: '[F] to chat'
       objectReference: {fileID: 0}
-    - target: {fileID: 3545048347780110775, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
+    - target: {fileID: 3081859109584733919, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
+        type: 3}
+      propertyPath: myButton
+      value: 
+      objectReference: {fileID: 266563809}
+    - target: {fileID: 1541021550223372107, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1010,25 +1020,15 @@ PrefabInstance:
       propertyPath: dialogue.sentences.Array.data[2]
       value: Have fun!
       objectReference: {fileID: 0}
+    - target: {fileID: 982184661658672783, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
+        type: 3}
+      propertyPath: m_Text
+      value: Press F
+      objectReference: {fileID: 0}
     - target: {fileID: 982184661118527506, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
         type: 3}
       propertyPath: m_Text
       value: Continue
-      objectReference: {fileID: 0}
-    - target: {fileID: 2592034849113854720, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2592034849113854720, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
-        type: 3}
-      propertyPath: m_Text
-      value: '[F] to chat'
-      objectReference: {fileID: 0}
-    - target: {fileID: 982184661658672783, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
-        type: 3}
-      propertyPath: m_Text
-      value: Press L Ctrl
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9d2a80dc2b96014abdf41b0e52bef6a, type: 3}
@@ -3898,6 +3898,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 860302167}
     m_Modifications:
+    - target: {fileID: 1869944673133636, guid: 9183174da29af27489188e29c25feb74, type: 3}
+      propertyPath: m_Name
+      value: Chair
+      objectReference: {fileID: 0}
     - target: {fileID: 4202392846036742, guid: 9183174da29af27489188e29c25feb74, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3941,10 +3945,6 @@ PrefabInstance:
     - target: {fileID: 4202392846036742, guid: 9183174da29af27489188e29c25feb74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1869944673133636, guid: 9183174da29af27489188e29c25feb74, type: 3}
-      propertyPath: m_Name
-      value: Chair
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9183174da29af27489188e29c25feb74, type: 3}
@@ -5066,6 +5066,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 860302167}
     m_Modifications:
+    - target: {fileID: 1734198659240738, guid: 83dd3cce9a26aaa49b8ec8d1e5de990c, type: 3}
+      propertyPath: m_Name
+      value: Desk
+      objectReference: {fileID: 0}
     - target: {fileID: 4447848867235440, guid: 83dd3cce9a26aaa49b8ec8d1e5de990c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5109,10 +5113,6 @@ PrefabInstance:
     - target: {fileID: 4447848867235440, guid: 83dd3cce9a26aaa49b8ec8d1e5de990c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1734198659240738, guid: 83dd3cce9a26aaa49b8ec8d1e5de990c, type: 3}
-      propertyPath: m_Name
-      value: Desk
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dd3cce9a26aaa49b8ec8d1e5de990c, type: 3}
