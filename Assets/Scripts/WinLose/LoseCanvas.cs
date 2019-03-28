@@ -16,19 +16,24 @@ public class LoseCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        totalTablets = GameObject.FindWithTag("Player").GetComponent<PlaceObject>().numOfTablets;
-        totalCalculators = GameObject.FindWithTag("Player").GetComponent<PlaceObject>().numOfCalculators;
-        totalNotebooks = GameObject.FindWithTag("Player").GetComponent<PlaceObject>().numOfNotebooks;
-        totalLaptops = GameObject.FindWithTag("Player").GetComponent<PlaceObject>().numOfLaptops;
-
-        totalCollected = totalTablets + totalCalculators + totalNotebooks + totalLaptops;
-
-        numCollected.text = "You collected: " + totalCollected + " out of 12 items";
+        DisplayAmountCollected();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    void DisplayAmountCollected()
+    {
+        totalTablets = GameObject.FindWithTag("Player").GetComponent<PlaceObject>().tabletCounter;
+        totalCalculators = GameObject.FindWithTag("Player").GetComponent<PlaceObject>().calculatorCounter;
+        totalNotebooks = GameObject.FindWithTag("Player").GetComponent<PlaceObject>().notebookCounter;
+        totalLaptops = GameObject.FindWithTag("Player").GetComponent<PlaceObject>().laptopCounter;
+
+        totalCollected = totalTablets + totalCalculators + totalNotebooks + totalLaptops;
+
+        numCollected.text = "Items collected: " + totalCollected + "/12";
     }
 }

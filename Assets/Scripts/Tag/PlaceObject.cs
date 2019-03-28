@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlaceObject : MonoBehaviour
 {
+    public float currentTime = 0.0f;
+    public Text setTime;
+
     // audio source
     public AudioSource _AudioSource;
 
@@ -72,9 +75,9 @@ public class PlaceObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkIfWon();
         currentTime += Time.deltaTime;
-        setTime.text = "Time: " + currentTime;
+        setTime.text = "Time: " + currentTime.ToString("F2") + " seconds";
+        checkIfWon();
     }
 
     IEnumerator placeThisObject(GameObject objects)
@@ -265,7 +268,7 @@ public class PlaceObject : MonoBehaviour
                 {
                     if (laptopCounter == numToDeactivate)
                     {
-                        GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().gameWon();
+                        GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().wonGame = true;
                     }
                 }
             }
