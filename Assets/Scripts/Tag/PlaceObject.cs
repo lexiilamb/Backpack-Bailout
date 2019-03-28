@@ -73,6 +73,8 @@ public class PlaceObject : MonoBehaviour
     void Update()
     {
         checkIfWon();
+        currentTime += Time.deltaTime;
+        setTime.text = "Time: " + currentTime;
     }
 
     IEnumerator placeThisObject(GameObject objects)
