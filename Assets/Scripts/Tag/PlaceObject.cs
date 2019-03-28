@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlaceObject : MonoBehaviour
 {
+    // audio source
+    public AudioSource _AudioSource;
+
     // Storage objects
     public GameObject tablets;
     public GameObject calculators;
@@ -176,6 +179,7 @@ public class PlaceObject : MonoBehaviour
             if (numOfTablets > 0)
             {
                 numOfTablets--;
+                _AudioSource.Play();
                 placedObject = placeThisObject(tablets);
                 StartCoroutine(placedObject);
             }
@@ -191,6 +195,7 @@ public class PlaceObject : MonoBehaviour
             if (numOfCalculators > 0)
             {
                 numOfCalculators--;
+                _AudioSource.Play();
                 placedObject = placeThisObject(calculators);
                 StartCoroutine(placedObject);
             }
@@ -206,6 +211,7 @@ public class PlaceObject : MonoBehaviour
             if (numOfNotebooks > 0)
             {
                 numOfNotebooks--;
+                _AudioSource.Play();
                 placedObject = placeThisObject(notebooks);
                 StartCoroutine(placedObject);
             }
@@ -221,6 +227,7 @@ public class PlaceObject : MonoBehaviour
             if (numOfLaptops > 0)
             {
                 numOfLaptops--;
+                _AudioSource.Play();
                 placedObject = placeThisObject(laptops);
                 StartCoroutine(placedObject);
             }
