@@ -6,9 +6,6 @@ using UnityEngine.AI;
 
 public class TagAI : MonoBehaviour
 {
-    private IEnumerator changeDirectionFacing;
-    public bool checkDirectionChange = true;
-    public float waitTime = 4.0f;
     enum Animation
     {
         ANGRY_WALK = 0,
@@ -71,31 +68,26 @@ public class TagAI : MonoBehaviour
             //      else run towards the target at an accelerated speed
             //  If the target is not within the viewcone then walk around the room looking for the target
             if (safeZone)
+            {
                 Peruse();
+            }
             else
+            {
                 if (target.viewable)
+                {
                     if (tagAI.remainingDistance <= tagAI.stoppingDistance)
+                    {
+                        chadCaughtPlayer = true;
                         Punch();
+                    }
+                    else
+                        Chase();
+                }
                 else
-                    Chase();
-            else
-                Pursue();
-
+                    Pursue();
+            }
         }
 
-    }
-
-    IEnumerator TurnChad(int directionToTurn)
-    {
-        ChadAnimationController.SetInteger("Movement", directionToTurn);
-        Debug.Log("waiting");
-        yield return new WaitForSeconds(3.0f);
-
-        // Negate the current value of turnedRight
-        // Switches to the opposite direction to turn
-        turnedRight = !turnedRight;
-        Debug.Log(turnedRight);
-        checkDirectionChange = true;
     }
 
     private void Pursue()
@@ -118,8 +110,6 @@ public class TagAI : MonoBehaviour
         ChadAnimationController.SetInteger("Movement", (int)Animation.PUNCH);
 
         tagAI.destination = player.transform.position;
-
-        chadCaughtPlayer = true;
     }
 
     private void Chase()
@@ -137,23 +127,19 @@ public class TagAI : MonoBehaviour
         //stop chad from moving
         tagAI.acceleration = stopSpeed;
 
-        if (checkDirectionChange)
+        //if the player is in the safe zone then look for the player left and right
+        if (turnedRight)
         {
-            checkDirectionChange = false;
-            //if the player is in the safe zone then look for the player left and right
-            if (turnedRight)
-            {
-                changeDirectionFacing = TurnChad((int)Animation.TURN_LEFT);
-                StartCoroutine(changeDirectionFacing);
-            }
-            else
-            {
-                changeDirectionFacing = TurnChad((int)Animation.TURN_RIGHT);
-                StartCoroutine(changeDirectionFacing);
-            }
+            ChadAnimationController.SetInteger("Movement", (int)Animation.TURN_LEFT);
+            turnedRight = false;
+        }
+        else
+        {
+            ChadAnimationController.SetInteger("Movement", (int)Animation.TURN_RIGHT);
+            turnedRight = true;
         }
 
-        //tagAI.destination = tagAI.transform.position;
+        tagAI.destination = tagAI.transform.position;
     }
 
     //generate random point in a sphere and move to that point
@@ -170,4 +156,8 @@ public class TagAI : MonoBehaviour
 
         return navHit.position;
     }
+
+
+
+
 }
