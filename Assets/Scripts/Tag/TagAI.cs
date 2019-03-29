@@ -81,10 +81,14 @@ public class TagAI : MonoBehaviour
                         Punch();
                     }
                     else
+                    {
                         Chase();
+                    }
                 }
                 else
+                {
                     Pursue();
+                }
             }
         }
 
@@ -156,8 +160,4 @@ public class TagAI : MonoBehaviour
 
         return navHit.position;
     }
-
-
-
-
 }
