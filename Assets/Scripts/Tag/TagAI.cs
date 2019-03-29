@@ -1,39 +1,50 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class TagAI : MonoBehaviour
 {
-    //walkable dimension of the room
-    //private float roomXlowerValue = -9.1f;
-    //private float roomXupperValue = 48f;
-    //private float roomZlowerValue = -9.9f;
-    //private float roomZupperValue = 16.5f;
+    enum Animation
+    {
+        ANGRY_WALK = 0,
+        PUNCH = 1,
+        RUN = 2,
+        TURN_LEFT = 3,
+        TURN_RIGHT = 4
+    }
 
     //parameters for RandomNavSphere for NPC to wander when player is in the safe zone
     public float maxRadius = 40.0f;
 
     GameObject player;
     NavMeshAgent tagAI;
-    Animator animCon;
+    Animator ChadAnimationController;
     public bool safeZone = false;
-
-    public bool chadCaughtPlayer = false;
 
     //add view cone 
     FieldOfView target;
 
     //acceleration speeds
-    float standardSpeed = 6.0f;
-    float acceleratedSpeed = 10.0f;
+    private float stopSpeed = 0.0f;
+    private float standardSpeed = 6.0f;
+    private float acceleratedSpeed = 10.0f;
+
+    //NPC rotations
+    private bool turnedRight = false;
+
+    //win-lose state
+    public bool chadCaughtPlayer = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        animCon = GetComponent<Animator>();
+
+        ChadAnimationController = GetComponent<Animator>();
 
         if (player == null)
         {
@@ -44,61 +55,95 @@ public class TagAI : MonoBehaviour
         target = GetComponent<FieldOfView>();
     }
 
-    //new Update with view Cone implementation
+
+    //Runs every frame
     void Update()
     {
         if (player != null)
         {
-            //check if the player is in the safezone
-            if(safeZone)
+            //If the target is in the safezone then peruse (look around) the room
+            //If the target is not in the safezone then check if it is within the viewcone
+            //  If the target is within the viewcone then check if NPC is within the stopping distance
+            //      If NPC is within the stopping distance then stop and punch the target
+            //      else run towards the target at an accelerated speed
+            //  If the target is not within the viewcone then walk around the room looking for the target
+            if (safeZone)
             {
-                tagAI.acceleration = standardSpeed;
-                //if the player is in the safe zone then walk around looking for the player
-                animCon.SetBool("isRunning", false);
-                animCon.SetBool("isPunchable", false);
-                animCon.SetBool("isWalkable", true);
-                tagAI.destination = RandomNavSphere(tagAI.transform.position, maxRadius);
+                Peruse();
             }
-            else 
+            else
             {
-                //if player is not in the safezone then check if the player is viewable
-                if(target.viewable)
+                if (target.viewable)
                 {
-                    //if the player is viewable and within distance then punch
                     if (tagAI.remainingDistance <= tagAI.stoppingDistance)
                     {
-                        tagAI.acceleration = standardSpeed;
-                        animCon.SetBool("isRunning", false);
-                        animCon.SetBool("isPunchable", true);
-
-                        // Take away a life
                         chadCaughtPlayer = true;
+                        Punch();
                     }
-                    //if the player is viewable and not within distance then run with an accelerated speed
                     else
                     {
-                        tagAI.acceleration = acceleratedSpeed;
-
-                        animCon.SetBool("isRunning", true);
-                        animCon.SetBool("isPunchable", false);
+                        Chase();
                     }
-
-                    animCon.SetBool("isWalkable", false);
-                    tagAI.destination = player.transform.position;
                 }
                 else
                 {
-                    //if player is not viewable then walk towards the player and set chad's acceleration to standard acceleration
-                    tagAI.acceleration = standardSpeed;
-
-                    animCon.SetBool("isRunning", false);
-                    animCon.SetBool("isPunchable", false);
-                    animCon.SetBool("isWalkable", true);
-                    tagAI.destination = player.transform.position;
+                    Pursue();
                 }
-
             }
         }
+
+    }
+
+    private void Pursue()
+    {
+        //Move slow when player not visible
+        tagAI.acceleration = standardSpeed;
+
+        tagAI.transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
+
+        ChadAnimationController.SetInteger("Movement", (int)Animation.ANGRY_WALK);
+
+        tagAI.destination = player.transform.position;
+    }
+
+    private void Punch()
+    {
+        //Move fast when player is visible
+        tagAI.acceleration = acceleratedSpeed;
+
+        ChadAnimationController.SetInteger("Movement", (int)Animation.PUNCH);
+
+        tagAI.destination = player.transform.position;
+    }
+
+    private void Chase()
+    {
+        //Move fast when player is visible
+        tagAI.acceleration = acceleratedSpeed;
+
+        ChadAnimationController.SetInteger("Movement", (int)Animation.RUN);
+
+        tagAI.destination = player.transform.position;
+    }
+
+    private void Peruse()
+    {
+        //stop chad from moving
+        tagAI.acceleration = stopSpeed;
+
+        //if the player is in the safe zone then look for the player left and right
+        if (turnedRight)
+        {
+            ChadAnimationController.SetInteger("Movement", (int)Animation.TURN_LEFT);
+            turnedRight = false;
+        }
+        else
+        {
+            ChadAnimationController.SetInteger("Movement", (int)Animation.TURN_RIGHT);
+            turnedRight = true;
+        }
+
+        tagAI.destination = tagAI.transform.position;
     }
 
     //generate random point in a sphere and move to that point
@@ -115,9 +160,4 @@ public class TagAI : MonoBehaviour
 
         return navHit.position;
     }
-
-
-
-
-
 }
