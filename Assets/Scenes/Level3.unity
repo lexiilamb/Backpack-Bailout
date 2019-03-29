@@ -8413,7 +8413,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &281553858
 PrefabInstance:
@@ -59441,6 +59441,10 @@ PrefabInstance:
       propertyPath: maxRadius
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 886609280, guid: 67ecb025a1ac14104b709f6a9623ad31, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1d34f8de3cade9448b8cc00bc063a249, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ecb025a1ac14104b709f6a9623ad31, type: 3}
 --- !u!1 &7606323177335998176 stripped
