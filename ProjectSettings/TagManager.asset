@@ -27,6 +27,7 @@ TagManager:
   - Chad
   - inventoryUI
   - CanvasHearts
+  - ChadWanderObject
   layers:
   - Default
   - TransparentFX
