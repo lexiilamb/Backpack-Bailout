@@ -75,9 +75,9 @@ public class PlayerLives : MonoBehaviour
     {
         // Reset player position
         yield return new WaitForSeconds(waitTime);
-        loseCanvas.gameObject.SetActive(true);
         // Freeze game and display lose canvas
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
+        loseCanvas.gameObject.SetActive(true);
     }
 
     public void ResetPlayer()

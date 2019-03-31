@@ -31,7 +31,6 @@ public class PauseButtons : MonoBehaviour
     public void Quit()
     {
         // Quit Game
-        Debug.Log("Quit");
         Application.Quit();
     }
 }

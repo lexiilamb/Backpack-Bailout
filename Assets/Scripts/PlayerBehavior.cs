@@ -45,10 +45,9 @@ public class PlayerBehavior : MonoBehaviour
 
     public void GameWon()
     {
-        // Play win sound/audio????
         // Freeze game and display win canvas
+        //Time.timeScale = 0f;
         winCanvas.gameObject.SetActive(true);
-        Time.timeScale = 0f;
     }
 
     public void SetCountText()

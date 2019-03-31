@@ -16,7 +16,6 @@ public class loadScene3 : MonoBehaviour
         {
             // Load level 3
             Initiate.Fade(scene, loadToColor, speed);
-            //SceneManager.LoadScene(2);
         }
 
     }

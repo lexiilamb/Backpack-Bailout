@@ -115,16 +115,11 @@ public class TagAI : MonoBehaviour
 
         Debug.Log("Coroutine start");
         ChadAnimationController.SetInteger("Movement", directionToTurn);
-        //Debug.Log("Rotation Quaternion = " + tagAI.transform.rotation);
 
         yield return new WaitForSeconds(3.0f);
 
-        // Negate the current value of turnedRight
-        // Switches to the opposite direction to turn
-        //turnedRight = !turnedRight;
         newDestination = true;
         wandering = true;
-        Debug.Log("Coroutine end");
     }
 
     private void Wander()
@@ -134,17 +129,12 @@ public class TagAI : MonoBehaviour
         {
             newDestination = false;
             randNumber = UnityEngine.Random.Range(0, 8);
-            Debug.Log("Going to " + randNumber);
         }
 
         destinationObject = items.transform.GetChild(randNumber);
-
         tagAI.speed = (float)Speed.NORMAL;
-
         tagAI.transform.LookAt(new Vector3(destinationObject.position.x, transform.position.y, destinationObject.position.z));
-
         ChadAnimationController.SetInteger("Movement", (int)Animation.ANGRY_WALK);
-
         tagAI.destination = destinationObject.position;
     }
 
@@ -152,9 +142,7 @@ public class TagAI : MonoBehaviour
     {
         //Move fast when player is visible
         tagAI.speed = (float)Speed.FAST;
-
         ChadAnimationController.SetInteger("Movement", (int)Animation.PUNCH);
-
         tagAI.destination = player.transform.position;
     }
 
@@ -162,9 +150,7 @@ public class TagAI : MonoBehaviour
     {
         //Move fast when player is visible
         tagAI.speed = (float)Speed.FAST;
-
         ChadAnimationController.SetInteger("Movement", (int)Animation.RUN);
-
         tagAI.destination = player.transform.position;
     }
 
@@ -172,11 +158,8 @@ public class TagAI : MonoBehaviour
     {
         //Move slow when player not visible
         tagAI.speed = (float)Speed.NORMAL;
-
         tagAI.transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
-
         ChadAnimationController.SetInteger("Movement", (int)Animation.ANGRY_WALK);
-
         tagAI.destination = player.transform.position;
     }
 
@@ -193,7 +176,6 @@ public class TagAI : MonoBehaviour
     {
         if (collision.gameObject.tag == "ChadWanderObject")
         {
-            Debug.Log("Chad left destination");
             ChadLeftDestination = true;
         }
     }
