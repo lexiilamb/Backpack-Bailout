@@ -23,8 +23,6 @@ public class WinCanvas : MonoBehaviour
     void DisplayFinalTime()
     {
         finalTime = GameObject.FindWithTag("Player").GetComponent<PlaceObject>().currentTime;
-        Debug.Log(finalTime);
-
         setTime.text = "Your Time: " + finalTime.ToString("F2") + " seconds";
     }
 }

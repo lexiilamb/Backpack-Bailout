@@ -13,13 +13,11 @@ public class loadGame : MonoBehaviour
     {
         // Load Level 1
         Initiate.Fade(scene, loadToColor, speed);
-        //SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
     {
         // Quit Game
-        Debug.Log("Quit");
         Application.Quit();
     }
 }
