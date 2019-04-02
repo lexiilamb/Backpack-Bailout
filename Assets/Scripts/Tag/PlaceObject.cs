@@ -24,10 +24,10 @@ public class PlaceObject : MonoBehaviour
     public GameObject notebookInventory;
     public GameObject laptopInventory;
 
-    public GameObject xTabletsUI;
-    public GameObject xCalculatorsUI;
-    public GameObject xNotebooksUI;
-    public GameObject xLaptopsUI;
+    private GameObject xTabletsUI;
+    private GameObject xCalculatorsUI;
+    private GameObject xNotebooksUI;
+    private GameObject xLaptopsUI;
 
     // Indecies 
     public int tabletCounter;
@@ -43,7 +43,7 @@ public class PlaceObject : MonoBehaviour
 
     // Boolean for CollectObject script 
     public bool canCollectObject = true;
-    private int numToDeactivate = 3;
+    private int numToDeactivate = 2;
 
     // Check once for shelves being full for AJ script
     private bool checkedT = false;

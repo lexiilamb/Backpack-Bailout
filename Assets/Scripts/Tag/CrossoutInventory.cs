@@ -14,7 +14,7 @@ public class CrossoutInventory : MonoBehaviour
     public int xNotebookCounter = 0;
     public int xLaptopCounter = 0;
 
-    public int numToActivate = 3;
+    public int numToActivate = 2;
 
     // Start is called before the first frame update
     void Start()

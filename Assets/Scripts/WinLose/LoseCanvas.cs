@@ -34,6 +34,6 @@ public class LoseCanvas : MonoBehaviour
 
         totalCollected = totalTablets + totalCalculators + totalNotebooks + totalLaptops;
 
-        numCollected.text = "Items collected: " + totalCollected + "/12";
+        numCollected.text = "Items collected: " + totalCollected + "/8";
     }
 }
