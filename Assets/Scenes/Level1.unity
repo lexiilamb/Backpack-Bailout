@@ -900,11 +900,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3081859109584733919, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
-        type: 3}
-      propertyPath: myButton
-      value: 
-      objectReference: {fileID: 266563809}
     - target: {fileID: 4140705684726556947, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -965,6 +960,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2592034849113854720, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2592034849113854720, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
+        type: 3}
+      propertyPath: m_Text
+      value: '[F] to chat'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081859109584733919, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
+        type: 3}
+      propertyPath: myButton
+      value: 
+      objectReference: {fileID: 266563809}
     - target: {fileID: 1541021550223372107, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
         type: 3}
       propertyPath: m_IsActive
@@ -1010,25 +1020,15 @@ PrefabInstance:
       propertyPath: dialogue.sentences.Array.data[2]
       value: Have fun!
       objectReference: {fileID: 0}
-    - target: {fileID: 982184661118527506, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
-        type: 3}
-      propertyPath: m_Text
-      value: Continue
-      objectReference: {fileID: 0}
-    - target: {fileID: 2592034849113854720, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2592034849113854720, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
-        type: 3}
-      propertyPath: m_Text
-      value: '[F] to chat'
-      objectReference: {fileID: 0}
     - target: {fileID: 982184661658672783, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
         type: 3}
       propertyPath: m_Text
       value: Press F
+      objectReference: {fileID: 0}
+    - target: {fileID: 982184661118527506, guid: c9d2a80dc2b96014abdf41b0e52bef6a,
+        type: 3}
+      propertyPath: m_Text
+      value: Continue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9d2a80dc2b96014abdf41b0e52bef6a, type: 3}
@@ -2912,10 +2912,12 @@ MonoBehaviour:
   dialogue:
     name: Claire
     sentences:
-    - What am I going to do??
-    - I can't find my backpack anywhere!
-    - I need it so I can get an A on my last final.
-    - My parents are going to kill me if I don't get an A in this class.
+    - I can't believe this is happening to me!
+    - My backpack is locked in the administration room and Chad is guarding it.
+    - 'He mentioned something about "ruining the curve" or something.
+
+'
+    - Hey! Everyone loves you, can you talk to AJ for me and get my backpack for me?
 --- !u!114 &721581140
 MonoBehaviour:
   m_ObjectHideFlags: 0
