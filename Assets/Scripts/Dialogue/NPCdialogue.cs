@@ -12,6 +12,7 @@ public class NPCdialogue : MonoBehaviour
     private IEnumerator dialogueCoroutine;
 
     private int karma = 0;
+    private int karmaNeededToProceed = 5;
 
     // Dialogue flags
     private bool startedDialogue = false;
@@ -109,7 +110,7 @@ public class NPCdialogue : MonoBehaviour
                         GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().SetCountText();
 
                         // if collosion.karam < 10
-                        if (karma < 10)
+                        if (karma < karmaNeededToProceed)
                         {
                             low.TriggerDialogue();
                             dialogueCoroutine = startTalking();
@@ -117,7 +118,7 @@ public class NPCdialogue : MonoBehaviour
                             dialogueManger.DisplayNextSentence();
                         }
                         // if collosion.karam >= 10
-                        else if (karma >= 10)
+                        else if (karma >= karmaNeededToProceed)
                         {
                             if (gameObject.tag == "Claire")
                             {
