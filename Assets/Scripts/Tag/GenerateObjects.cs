@@ -12,7 +12,7 @@ public class GenerateObjects : MonoBehaviour
 
     private int typesOfObjects = 4;
     private int amountOfEachObject = 10;
-    public int numToActivate = 3;
+    public int numToActivate = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +39,7 @@ public class GenerateObjects : MonoBehaviour
     public void generateObjects(GameObject objectGroup)
     {
         bool[] activeArray = new bool[amountOfEachObject];
-        int leftToActivate = numToActivate;
+        int leftToActivate = 2;
 
         while (leftToActivate > 0)
         {
