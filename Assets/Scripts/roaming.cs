@@ -9,7 +9,6 @@ public class roaming : MonoBehaviour
 
     Animator animator;
     public AudioSource _AudioSource;
-    public AudioClip _AudioClip1;
 
     private bool isWandering = false;
     private bool isRotating = false;
@@ -79,7 +78,7 @@ public class roaming : MonoBehaviour
     {
         pathIsBlocked = false;
         // Random amount of time to turn for
-        int rotTime = Random.Range(1, 3);
+        int rotTime = Random.Range(1, 2);
 
         // Stop other actions before turning
         isWalking = isRotating = false;
@@ -94,7 +93,7 @@ public class roaming : MonoBehaviour
     // Wandering coroutine
     IEnumerator Wander()
     {
-        int rotTime = Random.Range(1, 3);
+        int rotTime = Random.Range(1, 2);
         int rotateWait = Random.Range(1, 3);
         int walkWait = Random.Range(1, 2);
         int walkTime = Random.Range(1, 5);
