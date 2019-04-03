@@ -8501,6 +8501,7 @@ MonoBehaviour:
   waitTime: 3
   resetPlayer: 0
   endGame: 0
+  checkEndGame: 1
   canRemoveHeart: 1
   canvasHearts: {fileID: 1430757656}
   caughtMessage: {fileID: 59539768}

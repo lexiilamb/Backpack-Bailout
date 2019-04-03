@@ -21,6 +21,7 @@ public class PlayerBehavior : MonoBehaviour
     public bool claireAskedForHelp = false;
     public bool wonPong = false;
     public bool wonGame = false;
+    public bool checkWonGame = true;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,6 @@ public class PlayerBehavior : MonoBehaviour
 
     void Update()
     {
-
         if(wonGame)
         {
             wonGame = false;
@@ -47,9 +47,8 @@ public class PlayerBehavior : MonoBehaviour
     public void GameWon()
     {
         // Freeze game and display win canvas
-        //Time.timeScale = 0f;
-        winCanvas.gameObject.SetActive(true);
         _audioSource.Play();
+        winCanvas.gameObject.SetActive(true);
     }
 
     public void SetCountText()
