@@ -1379,7 +1379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44042f97713b09343968b2bfd4bc1580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Level3
+  scene: Tutorial
   loadToColor: {r: 1, g: 1, b: 1, a: 1}
   speed: 1
   youShallNotPass: {fileID: 314539167}
@@ -2713,7 +2713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44042f97713b09343968b2bfd4bc1580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: Level3
+  scene: Tutorial
   loadToColor: {r: 1, g: 1, b: 1, a: 1}
   speed: 1
   youShallNotPass: {fileID: 314539167}
