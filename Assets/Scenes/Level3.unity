@@ -8501,6 +8501,7 @@ MonoBehaviour:
   waitTime: 3
   resetPlayer: 0
   endGame: 0
+  checkEndGame: 1
   canRemoveHeart: 1
   canvasHearts: {fileID: 1430757656}
   caughtMessage: {fileID: 59539768}
@@ -60611,7 +60612,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: ffbbb73f3583f4204951b543e00cd508, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
-  m_Pitch: 0.7
+  m_Pitch: 3
   Loop: 1
   Mute: 0
   Spatialize: 0
