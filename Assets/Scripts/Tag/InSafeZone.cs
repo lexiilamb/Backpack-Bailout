@@ -1,18 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class InSafeZone : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject safezoneText;
+
+    void OnTriggerStay(Collider collision)
     {
-        
+        if (collision.gameObject.tag == "Player")
+        {
+            safezoneText.gameObject.SetActive(true);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerExit(Collider collision)
     {
-        
+        if (collision.gameObject.tag == "Player")
+        {
+            safezoneText.gameObject.SetActive(false);
+        }
     }
 }
