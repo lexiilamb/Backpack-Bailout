@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerLives : MonoBehaviour
 {
     Transform target;
+    public AudioSource _audiosource;
 
     public int currentLife = 0;
     public int waitTime = 3;
@@ -78,6 +79,7 @@ public class PlayerLives : MonoBehaviour
         // Freeze game and display lose canvas
         //Time.timeScale = 0f;
         loseCanvas.gameObject.SetActive(true);
+        _audiosource.Play();
     }
 
     public void ResetPlayer()
