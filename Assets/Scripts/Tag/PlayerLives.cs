@@ -11,6 +11,7 @@ public class PlayerLives : MonoBehaviour
     public int waitTime = 3;
     public bool resetPlayer = false;
     public bool endGame = false;
+    public bool checkEndGame = true;
     public bool canRemoveHeart = true;
     public GameObject canvasHearts;
     public GameObject caughtMessage;
@@ -43,10 +44,14 @@ public class PlayerLives : MonoBehaviour
             endGame = false;
         }
 
-        // Game over
-        if (currentLife == 3)
+        // Check if game over
+        if (checkEndGame)
         {
-            endGame = true;
+            if (currentLife == 3)
+            {
+                checkEndGame = false;
+                endGame = true;
+            }
         }
     }
 
@@ -74,12 +79,9 @@ public class PlayerLives : MonoBehaviour
 
     IEnumerator EndGame()
     {
-        // Reset player position
         yield return new WaitForSeconds(waitTime);
-        // Freeze game and display lose canvas
-        //Time.timeScale = 0f;
-        loseCanvas.gameObject.SetActive(true);
         _audiosource.Play();
+        loseCanvas.gameObject.SetActive(true);
     }
 
     public void ResetPlayer()
