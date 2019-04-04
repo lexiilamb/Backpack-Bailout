@@ -8,7 +8,7 @@ public class NPCdialogue : MonoBehaviour
     public DialogueTrigger low;
     public DialogueTrigger high;
     public DialogueManager dialogueManger;
-    public Text pushToTalk;
+    public Button pushToTalk;
     private IEnumerator dialogueCoroutine;
 
     private int karma = 0;
@@ -58,7 +58,7 @@ public class NPCdialogue : MonoBehaviour
 
     void OnTriggerStay(Collider collision)
     {
-        // Start dialogue if player hits "Fire1" (left ctrl)
+        // Start dialogue if player hits "Fire1" (F)
         if (collision.gameObject.tag == "Player")
         {
             if (Input.GetButtonDown("Fire1"))

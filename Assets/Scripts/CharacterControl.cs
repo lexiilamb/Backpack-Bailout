@@ -26,8 +26,16 @@ public class CharacterControl : MonoBehaviour {
     {
         if(!altToggle)
         {
-            Vector3 moveDir = transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal");
-            _characterController.SimpleMove(moveDir * _moveSpeed);
+            //Vector3 moveDir = transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal");
+            float horizInput = Input.GetAxis("Horizontal");
+            float vertInput = Input.GetAxis("Vertical");
+
+            Vector3 forwardMove = transform.forward * vertInput;
+            Vector3 rightMove = transform.right * horizInput;
+
+            _characterController.SimpleMove(Vector3.ClampMagnitude(forwardMove + rightMove, 1.0f) * _moveSpeed);
+
+            //_characterController.SimpleMove(moveDir * _moveSpeed);
 
             float yRot = Input.GetAxis("Mouse X") * _rotateSpeed;
             float xRot = Input.GetAxis("Mouse Y") * _rotateSpeed;
