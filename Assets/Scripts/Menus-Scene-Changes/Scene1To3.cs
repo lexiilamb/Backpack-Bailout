@@ -23,7 +23,7 @@ public class Scene1To3 : MonoBehaviour
         {
             if (collision.GetComponent<PlayerBehavior>().claireAskedForHelp)
             {
-                // Load level 2
+                // Load tutorial scene
                 Initiate.Fade(scene, loadToColor, speed);
             }
             else
