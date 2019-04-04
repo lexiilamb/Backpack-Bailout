@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Scene1To3 : MonoBehaviour
 {
-    public string scene = "Level3";
+    public string scene = "Tutorial";
     public Color loadToColor = Color.white;
     public float speed = 1.0f;
     public GameObject youShallNotPass;
@@ -23,7 +23,7 @@ public class Scene1To3 : MonoBehaviour
         {
             if (collision.GetComponent<PlayerBehavior>().claireAskedForHelp)
             {
-                // Load level 2
+                // Load tutorial scene
                 Initiate.Fade(scene, loadToColor, speed);
             }
             else
@@ -32,7 +32,6 @@ public class Scene1To3 : MonoBehaviour
                 youShallNotPass.SetActive(true);
             }
         }
-
     }
 
     void OnTriggerExit(Collider collision)
@@ -42,6 +41,5 @@ public class Scene1To3 : MonoBehaviour
             // Deactivate button
             youShallNotPass.SetActive(false);
         }
-
     }
 }

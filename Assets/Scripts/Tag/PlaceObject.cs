@@ -8,6 +8,8 @@ public class PlaceObject : MonoBehaviour
     public float currentTime = 0.0f;
     public Text setTime;
 
+    private IEnumerator placedObject;
+
     // audio source
     public AudioSource _AudioSource;
 
@@ -16,7 +18,6 @@ public class PlaceObject : MonoBehaviour
     public GameObject calculators;
     public GameObject notebooks;
     public GameObject laptops;
-    private IEnumerator placedObject;
 
     //Inventory objects
     public GameObject tabInventory;
