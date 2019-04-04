@@ -49,6 +49,9 @@ public class TutorialPlace : MonoBehaviour
         xOutLaptopsUI.gameObject.SetActive(false);
         laptopCounter++;
 
+        GameObject.FindWithTag("AJ").GetComponent<TutorialAJ>().collectionDialogueFlag = false;
+        GameObject.FindWithTag("AJ").GetComponent<TutorialAJ>().finalDialogueFlag = true;
+
         yield return new WaitForSeconds(0.2f);
     }
 

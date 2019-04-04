@@ -24,7 +24,7 @@ public class standingAJ : MonoBehaviour
     public bool finishedCollecting = false;
 
     public DialogueManager dialogueManger;
-    public Text pushToTalk;
+    public Button pushToTalk;
 
     private IEnumerator dialogueCoroutine;
 
@@ -55,13 +55,6 @@ public class standingAJ : MonoBehaviour
     public void pickObjectCategory()
     {
         bool pickedOne = false;
-
-        // If all categories asked for
-        //if(activeArray[0] && activeArray[1] && activeArray[2] && activeArray[3])
-        //{
-           //pickedOne = true;
-            //finishedCollecting = true;
-        //}
 
         if(canPickNextCategory)
         {
@@ -120,7 +113,7 @@ public class standingAJ : MonoBehaviour
 
     void OnTriggerStay(Collider collision)
     {
-        // Start dialogue if player hits "Fire1" (left ctrl)
+        // Start dialogue if player hits "Fire1"
         if (collision.gameObject.tag == "Player")
         {
             if (Input.GetButtonDown("Fire1"))
@@ -128,7 +121,7 @@ public class standingAJ : MonoBehaviour
                 // Hide push to talk message after beginning conversation
                 pushToTalk.gameObject.SetActive(false);
 
-                // Also disable text/button that prompted player to hit button
+                // Prevent dialogue from restarting before finished
                 if (continueTalking)
                 {
                     continueTalking = false;

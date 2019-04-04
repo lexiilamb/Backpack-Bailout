@@ -6,18 +6,18 @@ public class TutorialCollect : MonoBehaviour
 {
     public AudioSource _AudioSource;
 
+    public GameObject prompt;
     public GameObject xOutLaptopsUI;
 
     private IEnumerator collectedObject;
 
-    // Prevent objects from being counted twice
-    private bool canDestroyObject = true;
 
     // Start is called before the first frame update
     void Start()
     {
         collectedObject = destroyObject();
         xOutLaptopsUI.gameObject.SetActive(false);
+        prompt.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,7 +28,6 @@ public class TutorialCollect : MonoBehaviour
 
     IEnumerator destroyObject()
     {
-        canDestroyObject = false;
         FindObjectOfType<TutorialPlace>().numOfLaptops++;
 
         _AudioSource.Play();
@@ -41,7 +40,6 @@ public class TutorialCollect : MonoBehaviour
         // Destroy object
         Destroy(this.gameObject);
         xOutLaptopsUI.gameObject.SetActive(true);
-        canDestroyObject = true;
     }
 
     public void startDestroyCoroutine()
@@ -54,8 +52,25 @@ public class TutorialCollect : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            // Collect object on collision
-            startDestroyCoroutine();
+            // Collect object if talked to AJ
+            if (GameObject.FindWithTag("AJ").GetComponent<TutorialAJ>().collectionDialogueFlag)
+            {
+                startDestroyCoroutine();
+            }
+            else
+            {
+                // Prompt player to talk to AJ
+                prompt.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            // Prompt player to talk to AJ
+            prompt.gameObject.SetActive(false);
         }
     }
 }
