@@ -17,6 +17,9 @@ public class TagAI : MonoBehaviour
     public bool ChadLeftDestination = true;
     public bool safeZone = false;
 
+    //win-lose state
+    public bool chadCaughtPlayer = false;
+
     enum Animation
     {
         ANGRY_WALK = 0,
@@ -39,10 +42,6 @@ public class TagAI : MonoBehaviour
         NORMAL = 3,
         FAST = 5
     }
-
-    //win-lose state
-    public bool chadCaughtPlayer = false;
-
 
     // Start is called before the first frame update
     void Start()

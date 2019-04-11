@@ -98,9 +98,25 @@ public class PlayerLives : MonoBehaviour
             if(canRemoveHeart && GameObject.FindWithTag("Chad").GetComponent<TagAI>().chadCaughtPlayer)
             {
                 // Stop player movement
-                // Remove a heart and reset player  
-                GameObject.FindWithTag("Player").GetComponent<CharacterControl>().changeAltToggle = true;
+                // Remove a heart and reset player
                 canRemoveHeart = false;
+                GameObject.FindWithTag("Player").GetComponent<CharacterControl>().changeAltToggle = true;
+                ResetPlayer();
+            }
+        }
+    }
+
+    void OnTriggerStay(Collider collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            // If Chad caught player and a heart hasn't been removed for this instance
+            if (canRemoveHeart && GameObject.FindWithTag("Chad").GetComponent<TagAI>().chadCaughtPlayer)
+            {
+                // Stop player movement
+                // Remove a heart and reset player  
+                canRemoveHeart = false;
+                GameObject.FindWithTag("Player").GetComponent<CharacterControl>().changeAltToggle = true;
                 ResetPlayer();
             }
         }
