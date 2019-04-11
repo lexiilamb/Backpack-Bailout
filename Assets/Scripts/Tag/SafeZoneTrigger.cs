@@ -24,6 +24,14 @@ public class SafeZoneTrigger : MonoBehaviour
         }
     }
 
+    void OnTriggerStay(Collider collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GameObject.FindWithTag("Chad").GetComponent<TagAI>().safeZone = true;
+        }
+    }
+
     void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
