@@ -28,6 +28,7 @@ TagManager:
   - inventoryUI
   - CanvasHearts
   - ChadWanderObject
+  - Difficulty
   layers:
   - Default
   - TransparentFX

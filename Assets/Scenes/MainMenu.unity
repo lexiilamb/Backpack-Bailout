@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 67612979}
   - component: {fileID: 67612978}
   m_Layer: 5
-  m_Name: Difficulty
+  m_Name: ChangeDifficulty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,7 +1092,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &785548597
 GameObject:
@@ -1283,6 +1283,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &874375055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 874375056}
+  - component: {fileID: 874375057}
+  m_Layer: 0
+  m_Name: Difficulty
+  m_TagString: Difficulty
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &874375056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874375055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 684.5, y: 306, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &874375057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874375055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841b94a80c7ea2a4eb8c593ac6948699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDifficulty: 0
 --- !u!1 &901766114
 GameObject:
   m_ObjectHideFlags: 0
@@ -2063,7 +2107,6 @@ MonoBehaviour:
   scene: Level1
   loadToColor: {r: 0, g: 0, b: 0, a: 1}
   speed: 1
-  gameDifficulty: 0
 --- !u!114 &1217650003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2268,7 +2311,6 @@ MonoBehaviour:
   scene: Level1
   loadToColor: {r: 0, g: 0, b: 0, a: 1}
   speed: 1
-  gameDifficulty: 0
 --- !u!114 &1313936671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2803,7 +2845,6 @@ MonoBehaviour:
   scene: Level1
   loadToColor: {r: 0, g: 0, b: 0, a: 1}
   speed: 1
-  gameDifficulty: 0
 --- !u!114 &1452167369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3446,7 +3487,6 @@ MonoBehaviour:
   scene: Level1
   loadToColor: {r: 0, g: 0, b: 0, a: 1}
   speed: 1
-  gameDifficulty: 0
 --- !u!114 &1679501015
 MonoBehaviour:
   m_ObjectHideFlags: 0
