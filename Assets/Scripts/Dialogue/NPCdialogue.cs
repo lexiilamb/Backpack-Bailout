@@ -12,7 +12,8 @@ public class NPCdialogue : MonoBehaviour
     private IEnumerator dialogueCoroutine;
 
     private int karma = 0;
-    private int karmaNeededToProceed = 5;
+    private int difficulty = 0;
+    private int karmaNeededToProceed = 0;
 
     // Dialogue flags
     private bool startedDialogue = false;
@@ -26,9 +27,27 @@ public class NPCdialogue : MonoBehaviour
     {
         // Get karma score from main player
         karma = GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().count;
+        difficulty = GameDifficulty.gameDifficulty;
         finishedDialogue = dialogueManger.finished;
 
         pushToTalk.gameObject.SetActive(false);
+
+        // Set karmaNeededToProceed based on game difficulty
+        // Easy
+        if(difficulty == 0)
+        {
+            karmaNeededToProceed = 2;
+        }
+        // Medium
+        if (difficulty == 1)
+        {
+            karmaNeededToProceed = 4;
+        }
+        // Hard
+        if (difficulty == 2)
+        {
+            karmaNeededToProceed = 7;
+        }
     }
 
     // Update is called once per frame
@@ -109,7 +128,7 @@ public class NPCdialogue : MonoBehaviour
                         startedDialogue = true;
                         GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().SetCountText();
 
-                        // if collosion.karam < 10
+                        // if collosion.karam < karmaNeededToProceed
                         if (karma < karmaNeededToProceed)
                         {
                             low.TriggerDialogue();
@@ -117,7 +136,7 @@ public class NPCdialogue : MonoBehaviour
                             StartCoroutine(dialogueCoroutine);
                             dialogueManger.DisplayNextSentence();
                         }
-                        // if collosion.karam >= 10
+                        // if collosion.karam >= karmaNeededToProceed
                         else if (karma >= karmaNeededToProceed)
                         {
                             if (gameObject.tag == "Claire")

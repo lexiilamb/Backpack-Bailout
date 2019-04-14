@@ -42,9 +42,10 @@ public class PlaceObject : MonoBehaviour
     public int numOfNotebooks = 0;
     public int numOfLaptops = 0;
 
+    public int numToDeactivate;
+
     // Boolean for CollectObject script 
     public bool canCollectObject = true;
-    private int numToDeactivate = 2;
 
     // Check once for shelves being full for AJ script
     private bool checkedT = false;
@@ -52,25 +53,50 @@ public class PlaceObject : MonoBehaviour
     private bool checkedN = false;
     private bool checkedL = false;
 
+    private int difficulty = 0;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        tabletCounter = 0;
-        calculatorCounter = 0;
-        notebookCounter = 0;
-        laptopCounter = 0;
-        canCollectObject = true;
+        difficulty = GameDifficulty.gameDifficulty;
 
-        hideAll(tablets);
-        hideAll(calculators);
-        hideAll(notebooks);
-        hideAll(laptops);
+        
+        canCollectObject = true;
 
         xTabletsUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutTablets;
         xCalculatorsUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutCalculators;
         xNotebooksUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutNotebooks;
         xLaptopsUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutLaptops;
+
+        tabletCounter = calculatorCounter = notebookCounter = laptopCounter = 0;
+
+        // Adjust UI and shelves for difficulty level
+        // Easy
+        if (difficulty == 0)
+        {
+            numToDeactivate = 2;
+        }
+        // Medium
+        if (difficulty == 1)
+        {
+            numToDeactivate = 3;
+        }
+        // Hard
+        if (difficulty == 2)
+        {
+            numToDeactivate = 4;
+        }
+
+        hideSome(tablets);
+        hideSome(calculators);
+        hideSome(notebooks);
+        hideSome(laptops);
+
+        hideInventory(tabInventory);
+        hideInventory(calcInventory);
+        hideInventory(notebookInventory);
+        hideInventory(laptopInventory);
     }
 
     // Update is called once per frame
@@ -91,9 +117,11 @@ public class PlaceObject : MonoBehaviour
             // Activate enable object in storage shelf
             objects.transform.GetChild(tabletCounter).gameObject.SetActive(true);
             // Disable inventory icon on UI
-            tabInventory.transform.GetChild(tabletCounter + 1).gameObject.SetActive(false);
+            tabInventory.transform.GetChild(tabletCounter).gameObject.SetActive(false);
             xTabletsUI.transform.GetChild(tabletCounter).gameObject.SetActive(false);
             tabletCounter++;
+
+            Debug.Log("tabletCounter: " + tabletCounter);
 
             // If finished collecting 
             if (tabletCounter == numToDeactivate)
@@ -113,9 +141,10 @@ public class PlaceObject : MonoBehaviour
             // Activate enable object in storage shelf
             objects.transform.GetChild(calculatorCounter).gameObject.SetActive(true);
             // Disable inventory icon on UI
-            calcInventory.transform.GetChild(calculatorCounter + 1).gameObject.SetActive(false);
+            calcInventory.transform.GetChild(calculatorCounter).gameObject.SetActive(false);
             xCalculatorsUI.transform.GetChild(calculatorCounter).gameObject.SetActive(false);
             calculatorCounter++;
+            Debug.Log("calculatorCounter: " + calculatorCounter);
 
             // If finished collecting 
             if (calculatorCounter == numToDeactivate)
@@ -135,9 +164,10 @@ public class PlaceObject : MonoBehaviour
             // Activate enable object in storage shelf
             objects.transform.GetChild(notebookCounter).gameObject.SetActive(true);
             // Disable inventory icon on UI
-            notebookInventory.transform.GetChild(notebookCounter + 1).gameObject.SetActive(false);
+            notebookInventory.transform.GetChild(notebookCounter).gameObject.SetActive(false);
             xNotebooksUI.transform.GetChild(notebookCounter).gameObject.SetActive(false);
             notebookCounter++;
+            Debug.Log("notebookCounter: " + notebookCounter);
 
             // If finished collecting 
             if (notebookCounter == numToDeactivate)
@@ -157,9 +187,10 @@ public class PlaceObject : MonoBehaviour
             // Activate enable object in storage shelf
             objects.transform.GetChild(laptopCounter).gameObject.SetActive(true);
             // Disable inventory icon on UI
-            laptopInventory.transform.GetChild(laptopCounter + 1).gameObject.SetActive(false);
+            laptopInventory.transform.GetChild(laptopCounter).gameObject.SetActive(false);
             xLaptopsUI.transform.GetChild(laptopCounter).gameObject.SetActive(false);
             laptopCounter++;
+            Debug.Log("laptopCounter: " + laptopCounter);
 
             // If finished collecting 
             if (laptopCounter == numToDeactivate)
@@ -244,19 +275,22 @@ public class PlaceObject : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider collision)
-    {
-
-    }
-
-    public void hideAll(GameObject objectGroup)
+    public void hideSome(GameObject objectGroup)
     {
         for (int i = 0; i < numToDeactivate; i++)
         {
             GameObject hideObject = objectGroup.transform.GetChild(i).gameObject;
             hideObject.SetActive(false);
         }
+    }
 
+    public void hideInventory(GameObject objectGroup)
+    {
+        for (int i = 0; i < 4 - numToDeactivate; i++)
+        {
+            GameObject hideObject = objectGroup.transform.GetChild(3 - i).gameObject;
+            hideObject.SetActive(false);
+        }
     }
 
     public void checkIfWon()

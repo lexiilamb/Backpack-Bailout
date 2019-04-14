@@ -9,8 +9,23 @@ public class loadGame : MonoBehaviour
     public Color loadToColor = Color.black;
     public float speed = 1.0f;
 
-    public void SceneSwitcher ()
+    public void EasyGame()
     {
+        GameObject.Find("Difficulty").GetComponent<GameDifficulty>().setModeEasy();
+        // Load Level 1
+        Initiate.Fade(scene, loadToColor, speed);
+    }
+
+    public void MediumGame()
+    {
+        GameObject.Find("Difficulty").GetComponent<GameDifficulty>().setModeMedium();
+        // Load Level 1
+        Initiate.Fade(scene, loadToColor, speed);
+    }
+
+    public void HardGame()
+    {
+        GameObject.Find("Difficulty").GetComponent<GameDifficulty>().setModeHard();
         // Load Level 1
         Initiate.Fade(scene, loadToColor, speed);
     }

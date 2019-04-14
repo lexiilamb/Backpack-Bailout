@@ -12,11 +12,32 @@ public class GenerateObjects : MonoBehaviour
 
     private int typesOfObjects = 4;
     private int amountOfEachObject = 10;
-    public int numToActivate = 2;
+    private int numToActivate;
+    private int leftToActivate;
+
+    private int difficulty = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        difficulty = GameDifficulty.gameDifficulty;
+        // Set amount of items to activate based on game difficulty
+        // Easy
+        if (difficulty == 0)
+        {
+            numToActivate = 2;
+        }
+        // Medium
+        if (difficulty == 1)
+        {
+            numToActivate = 3;
+        }
+        // Hard
+        if (difficulty == 2)
+        {
+            numToActivate = 4;
+        }
+
         List<GameObject> objectArray = new List<GameObject>();
         objectArray.Add(tablets);
         objectArray.Add(calculators);
@@ -39,11 +60,11 @@ public class GenerateObjects : MonoBehaviour
     public void generateObjects(GameObject objectGroup)
     {
         bool[] activeArray = new bool[amountOfEachObject];
-        int leftToActivate = 2;
+        leftToActivate = numToActivate;
 
         while (leftToActivate > 0)
         {
-            // Pick random number from 0 and 4 (5 is exclusive) 
+            // Pick random number from 0 and amount to generate
             int randNumber = Random.Range(0, amountOfEachObject);
             if(!activeArray[randNumber])
             {
