@@ -44,9 +44,6 @@ public class PlaceObject : MonoBehaviour
 
     public int numToDeactivate;
 
-    // Boolean for CollectObject script 
-    public bool canCollectObject = true;
-
     // Check once for shelves being full for AJ script
     private bool checkedT = false;
     private bool checkedC = false;
@@ -60,9 +57,6 @@ public class PlaceObject : MonoBehaviour
     void Start()
     {
         difficulty = GameDifficulty.gameDifficulty;
-
-        
-        canCollectObject = true;
 
         xTabletsUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutTablets;
         xCalculatorsUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutCalculators;
@@ -109,9 +103,6 @@ public class PlaceObject : MonoBehaviour
 
     IEnumerator placeThisObject(GameObject objects)
     {
-        // Allow another object to be collected later 
-        canCollectObject = true;
-
         if (objects.tag == "TabletShelf")
         {
             // Activate enable object in storage shelf
