@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    public AudioSource _audioSource;
+    public AudioSource _AudioSource;
+    public AudioClip _AudioClip1;
     public string scene = "MainMenu";
     public Color loadToColor = Color.black;
     public float speed = 1.0f;
@@ -43,11 +44,11 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-
     public void GameWon()
     {
         // Freeze game and display win canvas
-        _audioSource.Play();
+        _AudioSource.clip = _AudioClip1;
+        _AudioSource.Play();
         winCanvas.gameObject.SetActive(true);
     }
 

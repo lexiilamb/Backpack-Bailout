@@ -9,16 +9,20 @@ public class CrossoutInventory : MonoBehaviour
     public GameObject xOutNotebooks;
     public GameObject xOutLaptops;
 
-    public int xTabCounter = 0;
-    public int xCalcCounter = 0;
-    public int xNotebookCounter = 0;
-    public int xLaptopCounter = 0;
+    public int xTabCounter;
+    public int xCalcCounter;
+    public int xNotebookCounter;
+    public int xLaptopCounter;
 
-    public int numToActivate = 2;
+    public int numToActivate;
 
     // Start is called before the first frame update
     void Start()
     {
+        numToActivate = 4;
+
+        xTabCounter = xCalcCounter = xNotebookCounter = xLaptopCounter = 0;
+
         hideAllUI(xOutTablets);
         hideAllUI(xOutCalculators);
         hideAllUI(xOutNotebooks);

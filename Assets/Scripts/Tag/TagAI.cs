@@ -20,6 +20,8 @@ public class TagAI : MonoBehaviour
     //win-lose state
     public bool chadCaughtPlayer = false;
 
+    private int difficulty = 0;
+
     enum Animation
     {
         ANGRY_WALK = 0,
@@ -46,6 +48,31 @@ public class TagAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        difficulty = GameDifficulty.gameDifficulty;
+        /*
+        // Easy
+        if (difficulty == 0)
+        {
+            Speed.NORMAL = 2;
+            Speed.FAST = 3;
+        }
+        // Medium
+        if (difficulty == 1)
+        {
+            Speed.NORMAL = 3;
+            Speed.FAST = 5;
+        }
+        // Hard
+        if (difficulty == 2)
+        {
+            Speed.NORMAL = 4;
+            Speed.FAST = 7;
+        }
+
+        Debug.Log("NORMAL: " + Speed.NORMAL);
+        Debug.Log("FAST: " + Speed.FAST);
+        */
+
         player = GameObject.FindGameObjectWithTag("Player");
 
 
@@ -112,7 +139,6 @@ public class TagAI : MonoBehaviour
         //stop chad from moving
         tagAI.speed = (float)Speed.ZERO;
 
-        Debug.Log("Coroutine start");
         ChadAnimationController.SetInteger("Movement", directionToTurn);
 
         yield return new WaitForSeconds(3.0f);
