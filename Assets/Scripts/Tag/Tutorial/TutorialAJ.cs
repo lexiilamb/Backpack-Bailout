@@ -84,17 +84,22 @@ public class TutorialAJ : MonoBehaviour
                             startedDialogue = false;
                             dialogueManger.finished = false;
 
-                            // Load Level3 if tutorial complete 
+                            // Load Level 3 if tutorial complete 
                             if(finalDialogueFlag)
                             {
                                 Debug.Log("TIME TO PLAY");
                                 Initiate.Fade(scene, loadToColor, speed);
                             }
-                            if (generalDialogueFlag)
+                            else if (generalDialogueFlag)
                             {
                                 Debug.Log("Finished general");
                                 generalDialogueFlag = false;
                                 collectionDialogueFlag = true;
+                                Debug.Log("collectionDialogueFlag is true");
+                            }
+                            else if (collectionDialogueFlag)
+                            {
+                                canCollectLaptop = true;
                             }
                         }
                     }
@@ -113,7 +118,6 @@ public class TutorialAJ : MonoBehaviour
                         // Allows laptop to be collected
                         if (collectionDialogueFlag == true)
                         {
-                            canCollectLaptop = true;
                             collectAndPlaceInstructions.TriggerDialogue();
                         }
                         // Final remarks dialogue after object has been placed in storage
