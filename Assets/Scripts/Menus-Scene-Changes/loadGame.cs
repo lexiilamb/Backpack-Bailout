@@ -9,6 +9,12 @@ public class loadGame : MonoBehaviour
     public Color loadToColor = Color.black;
     public float speed = 1.0f;
 
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     public void EasyGame()
     {
         GameObject.Find("Difficulty").GetComponent<GameDifficulty>().setModeEasy();

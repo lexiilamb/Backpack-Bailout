@@ -23,6 +23,7 @@ public class CharacterControl : MonoBehaviour {
 		_characterController = GetComponent<CharacterController>();
         _camera = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 	
 	void Update ()
@@ -47,26 +48,6 @@ public class CharacterControl : MonoBehaviour {
 
             transform.rotation = Quaternion.Euler(0, yRot, 0);
             _camera.transform.localRotation = Quaternion.Euler(-xRot, 0, 0);
-
-            if (Input.GetMouseButtonDown(0))
-                Cursor.lockState = CursorLockMode.Locked;
-        }
-
-        if (changeAltToggle)
-        {
-            if (!altToggle)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                altToggle = true;
-
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                altToggle = false;
-            }
-
-            changeAltToggle = false;
         }
     }
 
