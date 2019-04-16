@@ -53,7 +53,7 @@ public class TutorialCollect : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             // Collect object if talked to AJ
-            if (GameObject.FindWithTag("AJ").GetComponent<TutorialAJ>().collectionDialogueFlag)
+            if (GameObject.FindWithTag("AJ").GetComponent<TutorialAJ>().canCollectLaptop)
             {
                 startDestroyCoroutine();
             }
