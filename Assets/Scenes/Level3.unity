@@ -32513,14 +32513,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e523f5cd0b9fc31409778a3fb895ef68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xArray: []
   xOutTablets: {fileID: 1188247557}
   xOutCalculators: {fileID: 886757588}
   xOutNotebooks: {fileID: 835833176}
   xOutLaptops: {fileID: 59621601}
-  xTabCounter: 0
-  xCalcCounter: 0
-  xNotebookCounter: 0
-  xLaptopCounter: 0
+  xOutCategoryCounters: 00000000000000000000000000000000
   numToActivate: 3
 --- !u!1 &1113820271
 GameObject:
@@ -47920,6 +47918,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558f251ef913cd1479f46b97e5513858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tabletsIndex: 0
+  calculatorsIndex: 1
+  notebooksIndex: 2
+  laptopsIndex: 3
+  categoryCounters: 00000000000000000000000000000000
   currentTime: 0
   setTime: {fileID: 7409481069616735254}
   _AudioSource: {fileID: 1720611966}
@@ -47931,16 +47934,8 @@ MonoBehaviour:
   calcInventory: {fileID: 2104307857}
   notebookInventory: {fileID: 1920923259}
   laptopInventory: {fileID: 2019367587}
-  tabletCounter: 0
-  calculatorCounter: 0
-  notebookCounter: 0
-  laptopCounter: 0
-  numOfTablets: 0
-  numOfCalculators: 0
-  numOfNotebooks: 0
-  numOfLaptops: 0
+  amountCollected: 00000000000000000000000000000000
   numToDeactivate: 2
-  canCollectObject: 1
 --- !u!82 &1720611966
 AudioSource:
   m_ObjectHideFlags: 0
@@ -61036,7 +61031,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -4}
-  m_SizeDelta: {x: 160, y: 50}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7409481069616735254
 MonoBehaviour:

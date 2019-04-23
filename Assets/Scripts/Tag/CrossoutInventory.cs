@@ -4,35 +4,39 @@ using UnityEngine;
 
 public class CrossoutInventory : MonoBehaviour
 {
+    // Indecies for categories 
+    private int tabletsIndex = 0;
+    private int calculatorsIndex = 1;
+    private int notebooksIndex = 2;
+    private int laptopsIndex = 3;
+    private int[] indexArray;
+
+    // X gameobjects
+    public GameObject[] xArray; 
     public GameObject xOutTablets;
     public GameObject xOutCalculators;
     public GameObject xOutNotebooks;
     public GameObject xOutLaptops;
 
-    public int xTabCounter;
-    public int xCalcCounter;
-    public int xNotebookCounter;
-    public int xLaptopCounter;
+    // X out category counters
+    public int[] xOutCategoryCounters = new int[] { 0, 0, 0, 0 };
 
     public int numToActivate;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Indecies for categores
+        indexArray = new int[] { tabletsIndex, calculatorsIndex, notebooksIndex, laptopsIndex };
+
+        xArray = new GameObject[] { xOutTablets, xOutCalculators, xOutNotebooks, xOutLaptops};
+
         numToActivate = 4;
 
-        xTabCounter = xCalcCounter = xNotebookCounter = xLaptopCounter = 0;
-
-        hideAllUI(xOutTablets);
-        hideAllUI(xOutCalculators);
-        hideAllUI(xOutNotebooks);
-        hideAllUI(xOutLaptops);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        foreach (GameObject item in xArray)
+        {
+            hideAllUI(item);
+        }
     }
 
     public void hideAllUI(GameObject objectGroup)
@@ -42,28 +46,11 @@ public class CrossoutInventory : MonoBehaviour
             GameObject hideObject = objectGroup.transform.GetChild(i).gameObject;
             hideObject.SetActive(false);
         }
-
     }
 
-    public void crossoutTablets()
+    public void crossout(int index)
     {
-        xOutTablets.transform.GetChild(xTabCounter).gameObject.SetActive(true);
-        xTabCounter++;
-    }
-
-    public void crossoutCalculators()
-    {
-        xOutCalculators.transform.GetChild(xCalcCounter).gameObject.SetActive(true);
-        xCalcCounter++;
-    }
-    public void crossoutNotebooks()
-    {
-        xOutNotebooks.transform.GetChild(xNotebookCounter).gameObject.SetActive(true);
-        xNotebookCounter++;
-    }
-    public void crossoutLaptops()
-    {
-        xOutLaptops.transform.GetChild(xLaptopCounter).gameObject.SetActive(true);
-        xLaptopCounter++;
+        xArray[index].transform.GetChild(xOutCategoryCounters[index]).gameObject.SetActive(true);
+        xOutCategoryCounters[index]++;
     }
 }

@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class CollectObject : MonoBehaviour
 {
+    // Indecies for categories 
+    private int tabletsIndex = 0;
+    private int calculatorsIndex = 1;
+    private int notebooksIndex = 2;
+    private int laptopsIndex = 3;
+    private int[] indexArray;
+
+    private string[] tagNames = new string[] { "Tablet", "Calculators", "Notebooks", "Laptop"};
+
+
     public AudioSource _AudioSource;
 
     private IEnumerator collectedObject;
@@ -15,6 +25,9 @@ public class CollectObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Indecies for categores
+        indexArray = new int[] { tabletsIndex, calculatorsIndex, notebooksIndex, laptopsIndex };
+
         collectedObject = destroyObject();
     }
 
@@ -27,22 +40,16 @@ public class CollectObject : MonoBehaviour
     IEnumerator destroyObject()
     {
         canDestroyObject = false;
-        // Increment a counter for object
-        if (this.gameObject.tag == "Tablet")
+
+        foreach (int item in indexArray)
         {
-            FindObjectOfType<PlaceObject>().numOfTablets++;
-        }
-        if (this.gameObject.tag == "Calculators")
-        {
-            FindObjectOfType<PlaceObject>().numOfCalculators++;
-        }
-        if (this.gameObject.tag == "Notebooks")
-        {
-            FindObjectOfType<PlaceObject>().numOfNotebooks++;
-        }
-        if (this.gameObject.tag == "Laptop")
-        {
-            FindObjectOfType<PlaceObject>().numOfLaptops++;
+            // Increment a counter for object
+            if (this.gameObject.tag == tagNames[item])
+            {
+                Debug.Log("Item index: " + item);
+                Debug.Log("Destroying: " + tagNames[item]);
+                FindObjectOfType<PlaceObject>().amountCollected[item]++;
+            }
         }
 
         _AudioSource.Play();
@@ -70,35 +77,14 @@ public class CollectObject : MonoBehaviour
             // Prevents multiple collection of the same object
             if (canDestroyObject)
             {
-                /*
-                // Player must place each item in storage before collecting a new item
-                if(FindObjectOfType<PlaceObject>().canCollectObject)
+                foreach (int item in indexArray)
                 {
-                    FindObjectOfType<PlaceObject>().canCollectObject = false;
-                    collectedObject = destroyObject();
-                    StartCoroutine(collectedObject);
-                }
-                */
-                // Check if tag can be collected
-                if (this.gameObject.tag == "Tablet" && GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canCollectTablets)
-                {
-                    GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().crossoutTablets();
-                    startDestroyCoroutine();
-                }
-                if (this.gameObject.tag == "Calculators" && GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canCollectCalculators)
-                {
-                    GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().crossoutCalculators();
-                    startDestroyCoroutine();
-                }
-                if (this.gameObject.tag == "Notebooks" && GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canCollectNotebooks)
-                {
-                    GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().crossoutNotebooks();
-                    startDestroyCoroutine();
-                }
-                if (this.gameObject.tag == "Laptop" && GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canCollectLaptops)
-                {
-                    GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().crossoutLaptops();
-                    startDestroyCoroutine();
+                    if (this.gameObject.tag == tagNames[item] && GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canCollectFlags[item])
+                    {
+                        Debug.Log("Collected: " + tagNames[item]);
+                        GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().crossout(item);
+                        startDestroyCoroutine();
+                    }
                 }
             }
         }

@@ -5,10 +5,15 @@ using UnityEngine.UI;
 
 public class standingAJ : MonoBehaviour
 {
-    public bool canCollectTablets = false;
-    public bool canCollectCalculators = false;
-    public bool canCollectNotebooks = false;
-    public bool canCollectLaptops = false;
+    // Indecies for categories 
+    private int tabletsIndex = 0;
+    private int calculatorsIndex = 1;
+    private int notebooksIndex = 2;
+    private int laptopsIndex = 3;
+
+    // Boolean array to indicate items can be collected
+    public bool[] canCollectFlags = new bool[] { false, false, false, false };
+    public bool[] ajDialogueCategoriesFlags = new bool[] { false, false, false, false};
 
     public DialogueTrigger tabletDialogue;
     public DialogueTrigger calculatorDialogue;
@@ -16,22 +21,18 @@ public class standingAJ : MonoBehaviour
     public DialogueTrigger laptopDialogue;
     public DialogueTrigger finished;
 
-    public bool findTables = false;
-    public bool findCalculators = false;
-    public bool findNotebooks = false;
-    public bool findLaptops = false;
     public bool canPickNextCategory = true;
     public bool finishedCollecting = false;
 
     public DialogueManager dialogueManger;
     public Button pushToTalk;
 
-    private IEnumerator dialogueCoroutine;
-
     // Dialogue flags
     private bool startedDialogue = false;
     private bool finishedDialogue = false;
     private bool continueTalking = true;
+
+    private IEnumerator dialogueCoroutine;
 
     public int typesOfObjects = 4;
     bool[] activeArray;
@@ -72,23 +73,23 @@ public class standingAJ : MonoBehaviour
                     // Set boolean to true
                     if (randNumber == 0)
                     {
-                        findTables = true;
-                        canCollectTablets = true;
+                        ajDialogueCategoriesFlags[tabletsIndex] = true;
+                        canCollectFlags[tabletsIndex] = true;
                     }
                     if (randNumber == 1)
                     {
-                        findCalculators = true;
-                        canCollectCalculators = true;
+                        ajDialogueCategoriesFlags[calculatorsIndex] = true;
+                        canCollectFlags[calculatorsIndex] = true;
                     }
                     if (randNumber == 2)
                     {
-                        findNotebooks = true;
-                        canCollectNotebooks = true;
+                        ajDialogueCategoriesFlags[notebooksIndex] = true;
+                        canCollectFlags[notebooksIndex] = true;
                     }
                     if (randNumber == 3)
                     {
-                        findLaptops = true;
-                        canCollectLaptops = true;
+                        ajDialogueCategoriesFlags[laptopsIndex] = true;
+                        canCollectFlags[laptopsIndex] = true;
                     }
                 }
             }
@@ -151,28 +152,25 @@ public class standingAJ : MonoBehaviour
                         pickObjectCategory();
 
                         // if finding tablets
-                        if (findTables == true)
+                        if (ajDialogueCategoriesFlags[tabletsIndex] == true)
                         {
+                            Debug.Log("Tablet dialogue");
                             tabletDialogue.TriggerDialogue();
-                            //findTables = false;
                         }
                         // if finding calculators
-                        if (findCalculators == true)
+                        if (ajDialogueCategoriesFlags[calculatorsIndex] == true)
                         {
                             calculatorDialogue.TriggerDialogue();
-                            //findCalculators = false;
                         }
                         // if finding notebooks
-                        if (findNotebooks == true)
+                        if (ajDialogueCategoriesFlags[notebooksIndex] == true)
                         {
                             notebookDialogue.TriggerDialogue();
-                            //findNotebooks = false;
                         }
                         // if finding laptops
-                        if (findLaptops == true)
+                        if (ajDialogueCategoriesFlags[laptopsIndex] == true)
                         {
                             laptopDialogue.TriggerDialogue();
-                            //findLaptops = false;
                         }
                         // if finding laptops
                         if (finishedCollecting == true)

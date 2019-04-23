@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class PlaceObject : MonoBehaviour
 {
+    // Indecies for categories 
+    public int tabletsIndex = 0;
+    public int calculatorsIndex = 1;
+    public int notebooksIndex = 2;
+    public int laptopsIndex = 3;
+
+    // Shelves object tags
+    private string[] shelfTagNames = new string[] { "TabletShelf", "CalculatorShelf", "NotebookShelf", "LaptopShelf" };
+    public int[] categoryCounters = new int[] { 0, 0, 0, 0};
+
     public float currentTime = 0.0f;
     public Text setTime;
 
@@ -30,17 +40,8 @@ public class PlaceObject : MonoBehaviour
     private GameObject xNotebooksUI;
     private GameObject xLaptopsUI;
 
-    // Indecies 
-    public int tabletCounter;
-    public int calculatorCounter;
-    public int notebookCounter;
-    public int laptopCounter;
-
     // Collected objects
-    public int numOfTablets = 0;
-    public int numOfCalculators = 0;
-    public int numOfNotebooks = 0;
-    public int numOfLaptops = 0;
+    public int[] amountCollected = new int[] { 0, 0, 0, 0 };
 
     public int numToDeactivate;
 
@@ -62,8 +63,6 @@ public class PlaceObject : MonoBehaviour
         xCalculatorsUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutCalculators;
         xNotebooksUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutNotebooks;
         xLaptopsUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutLaptops;
-
-        tabletCounter = calculatorCounter = notebookCounter = laptopCounter = 0;
 
         // Adjust UI and shelves for difficulty level
         // Easy
@@ -103,94 +102,89 @@ public class PlaceObject : MonoBehaviour
 
     IEnumerator placeThisObject(GameObject objects)
     {
-        if (objects.tag == "TabletShelf")
+        if (objects.tag == shelfTagNames[tabletsIndex])
         {
             // Activate enable object in storage shelf
-            objects.transform.GetChild(tabletCounter).gameObject.SetActive(true);
+            objects.transform.GetChild(categoryCounters[tabletsIndex]).gameObject.SetActive(true);
             // Disable inventory icon on UI
-            tabInventory.transform.GetChild(tabletCounter).gameObject.SetActive(false);
-            xTabletsUI.transform.GetChild(tabletCounter).gameObject.SetActive(false);
-            tabletCounter++;
-
-            Debug.Log("tabletCounter: " + tabletCounter);
+            tabInventory.transform.GetChild(categoryCounters[tabletsIndex]).gameObject.SetActive(false);
+            xTabletsUI.transform.GetChild(categoryCounters[tabletsIndex]).gameObject.SetActive(false);
+            categoryCounters[tabletsIndex]++;
 
             // If finished collecting 
-            if (tabletCounter == numToDeactivate)
+            if (categoryCounters[tabletsIndex] == numToDeactivate)
             {
                 // Only allow a full shelf to enable AJ category switch once
                 if (!checkedT)
                 {
                     // Disable current category dialogue and allow new category to be picked
-                    GameObject.FindWithTag("AJ").GetComponent<standingAJ>().findTables = false;
+                    GameObject.FindWithTag("AJ").GetComponent<standingAJ>().ajDialogueCategoriesFlags[tabletsIndex] = false;
                     GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canPickNextCategory = true;
                 }
             }
         }
 
-        if (objects.tag == "CalculatorShelf")
+        if (objects.tag == shelfTagNames[calculatorsIndex])
         {
             // Activate enable object in storage shelf
-            objects.transform.GetChild(calculatorCounter).gameObject.SetActive(true);
+            objects.transform.GetChild(categoryCounters[calculatorsIndex]).gameObject.SetActive(true);
             // Disable inventory icon on UI
-            calcInventory.transform.GetChild(calculatorCounter).gameObject.SetActive(false);
-            xCalculatorsUI.transform.GetChild(calculatorCounter).gameObject.SetActive(false);
-            calculatorCounter++;
-            Debug.Log("calculatorCounter: " + calculatorCounter);
+            calcInventory.transform.GetChild(categoryCounters[calculatorsIndex]).gameObject.SetActive(false);
+            xCalculatorsUI.transform.GetChild(categoryCounters[calculatorsIndex]).gameObject.SetActive(false);
+            categoryCounters[calculatorsIndex]++;
 
             // If finished collecting 
-            if (calculatorCounter == numToDeactivate)
+            if (categoryCounters[calculatorsIndex] == numToDeactivate)
             {
                 // Only allow a full shelf to enable AJ category switch once
                 if (!checkedC)
                 {
                     // Disable current category dialogue and allow new category to be picked
-                    GameObject.FindWithTag("AJ").GetComponent<standingAJ>().findCalculators = false;
+                    GameObject.FindWithTag("AJ").GetComponent<standingAJ>().ajDialogueCategoriesFlags[calculatorsIndex] = false;
                     GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canPickNextCategory = true;
                 }
             }
         }
 
-        if (objects.tag == "NotebookShelf")
+        if (objects.tag == shelfTagNames[notebooksIndex])
         {
             // Activate enable object in storage shelf
-            objects.transform.GetChild(notebookCounter).gameObject.SetActive(true);
+            objects.transform.GetChild(categoryCounters[notebooksIndex]).gameObject.SetActive(true);
             // Disable inventory icon on UI
-            notebookInventory.transform.GetChild(notebookCounter).gameObject.SetActive(false);
-            xNotebooksUI.transform.GetChild(notebookCounter).gameObject.SetActive(false);
-            notebookCounter++;
-            Debug.Log("notebookCounter: " + notebookCounter);
+            notebookInventory.transform.GetChild(categoryCounters[notebooksIndex]).gameObject.SetActive(false);
+            xNotebooksUI.transform.GetChild(categoryCounters[notebooksIndex]).gameObject.SetActive(false);
+            categoryCounters[notebooksIndex]++;
 
             // If finished collecting 
-            if (notebookCounter == numToDeactivate)
+            if (categoryCounters[notebooksIndex] == numToDeactivate)
             {
                 // Only allow a full shelf to enable AJ category switch once
                 if (!checkedN)
                 {
                     // Disable current category dialogue and allow new category to be picked
-                    GameObject.FindWithTag("AJ").GetComponent<standingAJ>().findNotebooks = false;
+                    GameObject.FindWithTag("AJ").GetComponent<standingAJ>().ajDialogueCategoriesFlags[notebooksIndex] = false;
                     GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canPickNextCategory = true;
                 }
             }
         }
 
-        if (objects.tag == "LaptopShelf")
+        if (objects.tag == shelfTagNames[laptopsIndex])
         {
             // Activate enable object in storage shelf
-            objects.transform.GetChild(laptopCounter).gameObject.SetActive(true);
+            objects.transform.GetChild(categoryCounters[laptopsIndex]).gameObject.SetActive(true);
             // Disable inventory icon on UI
-            laptopInventory.transform.GetChild(laptopCounter).gameObject.SetActive(false);
-            xLaptopsUI.transform.GetChild(laptopCounter).gameObject.SetActive(false);
-            laptopCounter++;
-            Debug.Log("laptopCounter: " + laptopCounter);
+            laptopInventory.transform.GetChild(categoryCounters[laptopsIndex]).gameObject.SetActive(false);
+            xLaptopsUI.transform.GetChild(categoryCounters[laptopsIndex]).gameObject.SetActive(false);
+            categoryCounters[laptopsIndex]++;
 
             // If finished collecting 
-            if (laptopCounter == numToDeactivate)
+            if (categoryCounters[laptopsIndex] == numToDeactivate)
             {
                 // Only allow a full shelf to enable AJ category switch once
                 if (!checkedL)
                 {
                     // Disable current category dialogue and allow new category to be picked
-                    GameObject.FindWithTag("AJ").GetComponent<standingAJ>().findLaptops = false;
+                    GameObject.FindWithTag("AJ").GetComponent<standingAJ>().ajDialogueCategoriesFlags[laptopsIndex] = false;
                     GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canPickNextCategory = true;
                 }
             }
@@ -201,12 +195,12 @@ public class PlaceObject : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "TabletShelf")
+        if (collision.gameObject.tag == shelfTagNames[tabletsIndex])
         {
             // Add item to shelf if player has some
-            if (numOfTablets > 0)
+            if (amountCollected[tabletsIndex] > 0)
             {
-                numOfTablets--;
+                amountCollected[tabletsIndex]--;
                 _AudioSource.Play();
                 placedObject = placeThisObject(tablets);
                 StartCoroutine(placedObject);
@@ -217,12 +211,12 @@ public class PlaceObject : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "CalculatorShelf")
+        if (collision.gameObject.tag == shelfTagNames[calculatorsIndex])
         {
             // Add item to shelf if player has some
-            if (numOfCalculators > 0)
+            if (amountCollected[calculatorsIndex] > 0)
             {
-                numOfCalculators--;
+                amountCollected[calculatorsIndex]--;
                 _AudioSource.Play();
                 placedObject = placeThisObject(calculators);
                 StartCoroutine(placedObject);
@@ -233,12 +227,12 @@ public class PlaceObject : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "NotebookShelf")
+        if (collision.gameObject.tag == shelfTagNames[notebooksIndex])
         {
             // Add item to shelf if player has some
-            if (numOfNotebooks > 0)
+            if (amountCollected[notebooksIndex] > 0)
             {
-                numOfNotebooks--;
+                amountCollected[notebooksIndex]--;
                 _AudioSource.Play();
                 placedObject = placeThisObject(notebooks);
                 StartCoroutine(placedObject);
@@ -249,12 +243,12 @@ public class PlaceObject : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "LaptopShelf")
+        if (collision.gameObject.tag == shelfTagNames[laptopsIndex])
         {
             // Add item to shelf if player has some
-            if (numOfLaptops > 0)
+            if (amountCollected[laptopsIndex] > 0)
             {
-                numOfLaptops--;
+                amountCollected[laptopsIndex]--;
                 _AudioSource.Play();
                 placedObject = placeThisObject(laptops);
                 StartCoroutine(placedObject);
@@ -286,13 +280,13 @@ public class PlaceObject : MonoBehaviour
 
     public void checkIfWon()
     {
-        if (tabletCounter == numToDeactivate)
+        if (categoryCounters[tabletsIndex] == numToDeactivate)
         {
-            if (calculatorCounter == numToDeactivate)
+            if (categoryCounters[calculatorsIndex] == numToDeactivate)
             {
-                if (notebookCounter == numToDeactivate)
+                if (categoryCounters[notebooksIndex] == numToDeactivate)
                 {
-                    if (laptopCounter == numToDeactivate)
+                    if (categoryCounters[laptopsIndex] == numToDeactivate)
                     {
                         GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().wonGame = true;
                     }
