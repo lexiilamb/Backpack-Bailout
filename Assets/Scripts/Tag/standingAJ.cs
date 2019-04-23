@@ -10,6 +10,7 @@ public class standingAJ : MonoBehaviour
     private int calculatorsIndex = 1;
     private int notebooksIndex = 2;
     private int laptopsIndex = 3;
+    private int[] indexArray;
 
     // Boolean array to indicate items can be collected
     public bool[] canCollectFlags = new bool[] { false, false, false, false };
@@ -40,6 +41,9 @@ public class standingAJ : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Indecies for categores
+        indexArray = new int[] { tabletsIndex, calculatorsIndex, notebooksIndex, laptopsIndex };
+
         activeArray = new bool[typesOfObjects];
 
         finishedDialogue = dialogueManger.finished;
@@ -67,29 +71,16 @@ public class standingAJ : MonoBehaviour
                 if (!activeArray[randNumber])
                 {
                     pickedOne = true;
-                    Debug.Log("picked one: " + randNumber);
                     // Save the index of item chosen
                     activeArray[randNumber] = true;
-                    // Set boolean to true
-                    if (randNumber == 0)
+                    foreach (int categoryIndex in indexArray)
                     {
-                        ajDialogueCategoriesFlags[tabletsIndex] = true;
-                        canCollectFlags[tabletsIndex] = true;
-                    }
-                    if (randNumber == 1)
-                    {
-                        ajDialogueCategoriesFlags[calculatorsIndex] = true;
-                        canCollectFlags[calculatorsIndex] = true;
-                    }
-                    if (randNumber == 2)
-                    {
-                        ajDialogueCategoriesFlags[notebooksIndex] = true;
-                        canCollectFlags[notebooksIndex] = true;
-                    }
-                    if (randNumber == 3)
-                    {
-                        ajDialogueCategoriesFlags[laptopsIndex] = true;
-                        canCollectFlags[laptopsIndex] = true;
+                        // Set booleans to true
+                        if (randNumber == categoryIndex)
+                        {
+                            ajDialogueCategoriesFlags[categoryIndex] = true;
+                            canCollectFlags[categoryIndex] = true;
+                        }
                     }
                 }
             }
@@ -154,7 +145,6 @@ public class standingAJ : MonoBehaviour
                         // if finding tablets
                         if (ajDialogueCategoriesFlags[tabletsIndex] == true)
                         {
-                            Debug.Log("Tablet dialogue");
                             tabletDialogue.TriggerDialogue();
                         }
                         // if finding calculators

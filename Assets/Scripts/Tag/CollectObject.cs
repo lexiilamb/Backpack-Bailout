@@ -46,8 +46,6 @@ public class CollectObject : MonoBehaviour
             // Increment a counter for object
             if (this.gameObject.tag == tagNames[item])
             {
-                Debug.Log("Item index: " + item);
-                Debug.Log("Destroying: " + tagNames[item]);
                 FindObjectOfType<PlaceObject>().amountCollected[item]++;
             }
         }
@@ -81,7 +79,6 @@ public class CollectObject : MonoBehaviour
                 {
                     if (this.gameObject.tag == tagNames[item] && GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canCollectFlags[item])
                     {
-                        Debug.Log("Collected: " + tagNames[item]);
                         GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().crossout(item);
                         startDestroyCoroutine();
                     }

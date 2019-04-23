@@ -28,7 +28,7 @@ public class CrossoutInventory : MonoBehaviour
     {
         // Indecies for categores
         indexArray = new int[] { tabletsIndex, calculatorsIndex, notebooksIndex, laptopsIndex };
-
+        // X's for the inventory UI
         xArray = new GameObject[] { xOutTablets, xOutCalculators, xOutNotebooks, xOutLaptops};
 
         numToActivate = 4;
