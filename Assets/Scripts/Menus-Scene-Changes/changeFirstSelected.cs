@@ -9,10 +9,14 @@ public class changeFirstSelected : MonoBehaviour
 
     public EventSystem myEventSystem;
     public GameObject backToMenuButton;
-    // Start is called before the first frame update
-    void Start()
+
+    void Update()
     {
-        //Gameobject m_MyGameObject = backToMenuButton.Gameobject;
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
+        {
+            Debug.Log("UH oh, mouse clicked");
+            updateFirstSelected();
+        }
     }
 
     // Update is called once per frame

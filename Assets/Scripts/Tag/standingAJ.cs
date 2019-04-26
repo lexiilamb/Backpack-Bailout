@@ -43,11 +43,8 @@ public class standingAJ : MonoBehaviour
     {
         // Indecies for categores
         indexArray = new int[] { tabletsIndex, calculatorsIndex, notebooksIndex, laptopsIndex };
-
         activeArray = new bool[typesOfObjects];
-
         finishedDialogue = dialogueManger.finished;
-
         pushToTalk.gameObject.SetActive(false);
     }
 

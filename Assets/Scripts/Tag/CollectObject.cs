@@ -14,11 +14,8 @@ public class CollectObject : MonoBehaviour
 
     private string[] tagNames = new string[] { "Tablet", "Calculators", "Notebooks", "Laptop"};
 
-
     public AudioSource _AudioSource;
-
     private IEnumerator collectedObject;
-
     // Prevent objects from being counted twice
     private bool canDestroyObject = true;
 
@@ -27,14 +24,8 @@ public class CollectObject : MonoBehaviour
     {
         // Indecies for categores
         indexArray = new int[] { tabletsIndex, calculatorsIndex, notebooksIndex, laptopsIndex };
-
+        // Initializing IEnumerator
         collectedObject = destroyObject();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     IEnumerator destroyObject()

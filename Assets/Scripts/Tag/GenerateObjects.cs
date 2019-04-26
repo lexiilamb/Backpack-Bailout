@@ -22,21 +22,10 @@ public class GenerateObjects : MonoBehaviour
     {
         difficulty = GameDifficulty.gameDifficulty;
         // Set amount of items to activate based on game difficulty
-        // Easy
-        if (difficulty == 0)
-        {
-            numToActivate = 2;
-        }
-        // Medium
-        if (difficulty == 1)
-        {
-            numToActivate = 3;
-        }
-        // Hard
-        if (difficulty == 2)
-        {
-            numToActivate = 4;
-        }
+        // Easy = activate 2 of each category
+        // Medium = 3 of each category 
+        // Hard = 4 of each
+        numToActivate = difficulty + 2;
 
         List<GameObject> objectArray = new List<GameObject>();
         objectArray.Add(tablets);
@@ -49,12 +38,6 @@ public class GenerateObjects : MonoBehaviour
 
         for (int i =0; i < typesOfObjects; i++)
             generateObjects(objectArray[i]);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void generateObjects(GameObject objectGroup)

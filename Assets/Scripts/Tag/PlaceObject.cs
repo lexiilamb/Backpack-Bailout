@@ -13,7 +13,7 @@ public class PlaceObject : MonoBehaviour
     private int[] indexArray;
 
     // Shelves object tags
-    private string[] shelfTagNames = new string[] { "TabletShelf", "CalculatorShelf", "NotebookShelf", "LaptopShelf" };
+    private string[] shelfTagNames;
     public int[] categoryCounters = new int[] { 0, 0, 0, 0};
 
     public float currentTime = 0.0f;
@@ -29,6 +29,7 @@ public class PlaceObject : MonoBehaviour
     public GameObject calculators;
     public GameObject notebooks;
     public GameObject laptops;
+    public GameObject[] storageShelfObjects;
 
     //Inventory objects
     public GameObject tabInventory;
@@ -50,21 +51,19 @@ public class PlaceObject : MonoBehaviour
 
     // Check once for shelves being full for AJ script
     private bool checkedT = false;
-    private bool checkedC = false;
-    private bool checkedN = false;
-    private bool checkedL = false;
-
     private int difficulty = 0;
-
 
     // Start is called before the first frame update
     void Start()
     {
         difficulty = GameDifficulty.gameDifficulty;
 
+        shelfTagNames = new string[] { "TabletShelf", "CalculatorShelf", "NotebookShelf", "LaptopShelf" };
+
         // Indecies for categores
         indexArray = new int[] { tabletsIndex, calculatorsIndex, notebooksIndex, laptopsIndex };
         inventoryObjectsArray = new GameObject[] { tabInventory , calcInventory, notebookInventory, laptopInventory };
+        storageShelfObjects = new GameObject[] { tablets, calculators, notebooks, laptops };
 
         xTabletsUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutTablets;
         xCalculatorsUI = GameObject.FindWithTag("inventoryUI").GetComponent<CrossoutInventory>().xOutCalculators;
@@ -74,31 +73,22 @@ public class PlaceObject : MonoBehaviour
         xObjectsArrayUI = new GameObject[] { xTabletsUI, xCalculatorsUI, xNotebooksUI, xLaptopsUI };
 
         // Adjust UI and shelves for difficulty level
-        // Easy
-        if (difficulty == 0)
+        // Easy = activate 2 of each category
+        // Medium = 3 of each category 
+        // Hard = 4 of each
+        numToDeactivate = difficulty + 2;
+
+        // Deactivate objects in storage that need to be collected
+        foreach (int item in indexArray)
         {
-            numToDeactivate = 2;
-        }
-        // Medium
-        if (difficulty == 1)
-        {
-            numToDeactivate = 3;
-        }
-        // Hard
-        if (difficulty == 2)
-        {
-            numToDeactivate = 4;
+            hideSome(storageShelfObjects[item]);
         }
 
-        hideSome(tablets);
-        hideSome(calculators);
-        hideSome(notebooks);
-        hideSome(laptops);
-
-        hideInventory(tabInventory);
-        hideInventory(calcInventory);
-        hideInventory(notebookInventory);
-        hideInventory(laptopInventory);
+        // Hide objects in inventory UI if on easy or medium difficulty
+        foreach (int item in indexArray)
+        {
+            hideInventory(inventoryObjectsArray[item]);
+        }
     }
 
     // Update is called once per frame
@@ -141,67 +131,22 @@ public class PlaceObject : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == shelfTagNames[tabletsIndex])
+        foreach (int item in indexArray)
         {
-            // Add item to shelf if player has some
-            if (amountCollected[tabletsIndex] > 0)
+            if (collision.gameObject.tag == shelfTagNames[item])
             {
-                amountCollected[tabletsIndex]--;
-                _AudioSource.Play();
-                placedObject = placeThisObject(tablets);
-                StartCoroutine(placedObject);
-            }
-            else
-            {
-                Debug.Log("No tablets collected");
-            }
-        }
-
-        if (collision.gameObject.tag == shelfTagNames[calculatorsIndex])
-        {
-            // Add item to shelf if player has some
-            if (amountCollected[calculatorsIndex] > 0)
-            {
-                amountCollected[calculatorsIndex]--;
-                _AudioSource.Play();
-                placedObject = placeThisObject(calculators);
-                StartCoroutine(placedObject);
-            }
-            else
-            {
-                Debug.Log("No calculators collected");
-            }
-        }
-
-        if (collision.gameObject.tag == shelfTagNames[notebooksIndex])
-        {
-            // Add item to shelf if player has some
-            if (amountCollected[notebooksIndex] > 0)
-            {
-                amountCollected[notebooksIndex]--;
-                _AudioSource.Play();
-                placedObject = placeThisObject(notebooks);
-                StartCoroutine(placedObject);
-            }
-            else
-            {
-                Debug.Log("No notebooks collected");
-            }
-        }
-
-        if (collision.gameObject.tag == shelfTagNames[laptopsIndex])
-        {
-            // Add item to shelf if player has some
-            if (amountCollected[laptopsIndex] > 0)
-            {
-                amountCollected[laptopsIndex]--;
-                _AudioSource.Play();
-                placedObject = placeThisObject(laptops);
-                StartCoroutine(placedObject);
-            }
-            else
-            {
-                Debug.Log("No laptops collected");
+                // Add item to shelf if player has some
+                if (amountCollected[item] > 0)
+                {
+                    amountCollected[item]--;
+                    _AudioSource.Play();
+                    placedObject = placeThisObject(storageShelfObjects[item]);
+                    StartCoroutine(placedObject);
+                }
+                else
+                {
+                    Debug.Log("None collected");
+                }
             }
         }
     }
