@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class standingAJ : MonoBehaviour
 {
+    //player and AJ
+    GameObject player;
+    GameObject AJ;
+
     // Indecies for categories 
     private int tabletsIndex = 0;
     private int calculatorsIndex = 1;
@@ -46,6 +50,10 @@ public class standingAJ : MonoBehaviour
         activeArray = new bool[typesOfObjects];
         finishedDialogue = dialogueManger.finished;
         pushToTalk.gameObject.SetActive(false);
+
+        //initiate player
+        player = GameObject.FindGameObjectWithTag("Player");
+        AJ = GameObject.FindGameObjectWithTag("AJ");
     }
 
     // Update is called once per frame
@@ -95,10 +103,12 @@ public class standingAJ : MonoBehaviour
         // Prompt player to hit "Fire1" (left ctrl) to start dialogue
         if (collision.gameObject.tag == "Player")
         {
+
             pushToTalk.gameObject.SetActive(true);
             StopAllCoroutines();
         }
     }
+
 
     void OnTriggerStay(Collider collision)
     {
@@ -107,6 +117,10 @@ public class standingAJ : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
+                //look at the player 
+                AJ.transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
+
+
                 // Hide push to talk message after beginning conversation
                 pushToTalk.gameObject.SetActive(false);
 

@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class NPCdialogue : MonoBehaviour
 {
+
+    //player and AJ
+    GameObject player;
+    GameObject NPC;
+    GameObject NoticeBoard;
+
+
     public DialogueTrigger low;
     public DialogueTrigger high;
     public DialogueManager dialogueManger;
@@ -48,6 +55,11 @@ public class NPCdialogue : MonoBehaviour
         {
             karmaNeededToProceed = 7;
         }
+
+        //initiate player
+        player = GameObject.FindGameObjectWithTag("Player");
+        NPC = GameObject.FindGameObjectWithTag("NPC");
+        NoticeBoard = GameObject.FindGameObjectWithTag("NoticeBoard");
     }
 
     // Update is called once per frame
@@ -82,6 +94,10 @@ public class NPCdialogue : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
+                //look at the player 
+                NPC.transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
+
+
                 // Hide push to talk message after beginning conversation
                 pushToTalk.gameObject.SetActive(false);
 
@@ -163,6 +179,10 @@ public class NPCdialogue : MonoBehaviour
         // End dialogue upon player exit
         if (collision.gameObject.tag == "Player")
         {
+            //go back to original position
+            NPC.transform.LookAt(new Vector3(NoticeBoard.transform.position.x, transform.position.y, NoticeBoard.transform.position.z));
+
+
             pushToTalk.gameObject.SetActive(false);
             FindObjectOfType<DialogueManager>().EndDialogue();
             continueTalking = true;

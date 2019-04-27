@@ -29,6 +29,7 @@ TagManager:
   - CanvasHearts
   - ChadWanderObject
   - Difficulty
+  - NoticeBoard
   layers:
   - Default
   - TransparentFX
