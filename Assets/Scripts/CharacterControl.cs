@@ -49,6 +49,23 @@ public class CharacterControl : MonoBehaviour {
             transform.rotation = Quaternion.Euler(0, yRot, 0);
             _camera.transform.localRotation = Quaternion.Euler(-xRot, 0, 0);
         }
+
+        if (changeAltToggle)
+        {
+            if (!altToggle)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                altToggle = true;
+
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                altToggle = false;
+            }
+
+            changeAltToggle = false;
+        }
     }
 
     void OnTriggerEnter(Collider collision)

@@ -115,6 +115,7 @@ public class TagAI : MonoBehaviour
                 {
                     if (tagAI.remainingDistance <= tagAI.stoppingDistance)
                     {
+                        // Let PlayerLives script know a heart needs to be removed
                         chadCaughtPlayer = true;
                         Punch();
                     }
