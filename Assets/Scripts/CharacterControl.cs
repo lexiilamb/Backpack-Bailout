@@ -42,7 +42,10 @@ public class CharacterControl : MonoBehaviour {
             //_characterController.SimpleMove(moveDir * _moveSpeed);
 
             yRot += Input.GetAxis("Mouse X") * _rotateSpeed;
-            xRot += Input.GetAxis("Mouse Y") * _rotateSpeed;
+            xRot += Input.GetAxis("Mouse Y") * -(_rotateSpeed);
+
+            Debug.Log("horizontal rotation is " + xRot);
+            Debug.Log("vertical rotation is " + yRot);
 
             xRot = Mathf.Clamp(xRot, -90f, 90f);
 
