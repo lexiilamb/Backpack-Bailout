@@ -27,6 +27,7 @@ public class NPCdialogue : MonoBehaviour
     private bool finishedDialogue = false;
     private bool continueTalking = true;
     private bool playerMovementStopped = false;
+    private bool pleaseDontRepeatDialogue = true;
 
 
     // Start is called before the first frame update
@@ -92,87 +93,89 @@ public class NPCdialogue : MonoBehaviour
         // Start dialogue if player hits "Fire1" (F)
         if (collision.gameObject.tag == "Player")
         {
-            if (Input.GetButtonDown("Fire1"))
+            if(pleaseDontRepeatDialogue)
             {
-                //look at the player 
-                NPC.transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
-
-                Debug.Log("Just hit F key");
-
-                // Hide push to talk message after beginning conversation
-                pushToTalk.gameObject.SetActive(false);
-
-                if(!playerMovementStopped)
+                if (Input.GetButtonDown("Fire1"))
                 {
-                    Debug.Log("Stopping player movement");
+                    //look at the player 
+                    NPC.transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
 
-                    // Stop player movement 
-                    GameObject.FindWithTag("Player").GetComponent<CharacterControl>().changeAltToggle = true;
-                    playerMovementStopped = true;
-                }
+                    Debug.Log("Just hit F key");
 
-                // Also disable text/button that prompted player to hit button
-                if (continueTalking)
-                {
+                    // Hide push to talk message after beginning conversation
+                    pushToTalk.gameObject.SetActive(false);
 
-                    Debug.Log("continue talking");
-
-                    continueTalking = false;
-
-                    // Display the reset of the messages in NPC dialogue script
-                    if (startedDialogue)
+                    if (!playerMovementStopped)
                     {
-                        dialogueManger.DisplayNextSentence();
+                        Debug.Log("Stopping player movement");
 
-                        // If there are no more messages in NPC dialogue script
-                        if (dialogueManger.finished)
-                        {
-                            Debug.Log("Finished talking, resume player movement");
-
-                            startedDialogue = false;
-                            dialogueManger.finished = false;
-
-                            // Resume player movement 
-                            GameObject.FindWithTag("Player").GetComponent<CharacterControl>().changeAltToggle = true;
-                            playerMovementStopped = false;
-
-                            GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().SetCountText();
-                        }
+                        // Stop player movement 
+                        GameObject.FindWithTag("Player").GetComponent<CharacterControl>().changeAltToggle = true;
+                        playerMovementStopped = true;
                     }
 
-                    // If this is the first message in NPC dialogue script 
-                    else
+                    // Also disable text/button that prompted player to hit button
+                    if (continueTalking)
                     {
-                        Debug.Log("Start first message");
 
-                        startedDialogue = true;
+                        Debug.Log("continue talking");
 
-                        // if collosion.karam < karmaNeededToProceed
-                        if (karma < karmaNeededToProceed)
+                        continueTalking = false;
+
+                        // Display the reset of the messages in NPC dialogue script
+                        if (startedDialogue)
                         {
-                            Debug.Log("Start low dialogue");
-                            Debug.Log(karma);
-
-                            low.TriggerDialogue();
-                            dialogueCoroutine = startTalking();
-                            StartCoroutine(dialogueCoroutine);
+                            Debug.Log("displayed NEXT message");
                             dialogueManger.DisplayNextSentence();
-                        }
-                        // if collosion.karam >= karmaNeededToProceed
-                        else if (karma >= karmaNeededToProceed)
-                        {
-                            Debug.Log("Start high dialogue");
 
-                            if (gameObject.tag == "Claire")
+                            // If there are no more messages in NPC dialogue script
+                            if (dialogueManger.finished)
                             {
-                                GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().claireAskedForHelp = true;
-                            }
+                                Debug.Log("Finished talking, resume player movement");
 
-                            Debug.Log(karma);
-                            high.TriggerDialogue();
-                            dialogueCoroutine = startTalking();
-                            StartCoroutine(dialogueCoroutine);
-                            dialogueManger.DisplayNextSentence();
+                                startedDialogue = false;
+                                dialogueManger.finished = false;
+
+                                // Resume player movement 
+                                GameObject.FindWithTag("Player").GetComponent<CharacterControl>().changeAltToggle = true;
+                                playerMovementStopped = false;
+
+                                GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().SetCountText();
+                                pleaseDontRepeatDialogue = false;
+                            }
+                        }
+
+                        // If this is the first message in NPC dialogue script 
+                        else
+                        {
+                            Debug.Log("Start first message");
+
+                            startedDialogue = true;
+
+                            // if collosion.karam < karmaNeededToProceed
+                            if (karma > karmaNeededToProceed)
+                            {
+                                Debug.Log("Start high dialogue");
+
+                                if (gameObject.tag == "Claire")
+                                {
+                                    GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().claireAskedForHelp = true;
+                                }
+
+                                high.TriggerDialogue();
+                                dialogueCoroutine = startTalking();
+                                StartCoroutine(dialogueCoroutine);
+                                dialogueManger.DisplayNextSentence();
+                            }
+                            // if collosion.karam >= karmaNeededToProceed
+                            else
+                            {
+                                Debug.Log("Start low dialogue");
+                                low.TriggerDialogue();
+                                dialogueCoroutine = startTalking();
+                                StartCoroutine(dialogueCoroutine);
+                                dialogueManger.DisplayNextSentence();
+                            }
                         }
                     }
                 }
@@ -198,6 +201,7 @@ public class NPCdialogue : MonoBehaviour
             startedDialogue = false;
             dialogueManger.finished = false;
             StopAllCoroutines();
+            pleaseDontRepeatDialogue = true;
         }
     }
 }
