@@ -8,6 +8,8 @@ public class CharacterControl : MonoBehaviour {
     [SerializeField] private float _moveSpeed = 0;
     [SerializeField] private float _rotateSpeed = 0;
 
+    float horizInput;
+    float vertInput;
     float yRot;
     float xRot;
 
@@ -31,8 +33,8 @@ public class CharacterControl : MonoBehaviour {
         if(!altToggle)
         {
             //Vector3 moveDir = transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal");
-            float horizInput = Input.GetAxis("Horizontal");
-            float vertInput = Input.GetAxis("Vertical");
+            horizInput = Input.GetAxis("Horizontal");
+            vertInput = Input.GetAxis("Vertical");
 
             Vector3 forwardMove = transform.forward * vertInput;
             Vector3 rightMove = transform.right * horizInput;
@@ -42,7 +44,13 @@ public class CharacterControl : MonoBehaviour {
             //_characterController.SimpleMove(moveDir * _moveSpeed);
 
             yRot += Input.GetAxis("Mouse X") * _rotateSpeed;
-            xRot += Input.GetAxis("Mouse Y") * -(_rotateSpeed);
+            xRot += Input.GetAxis("Mouse Y") * _rotateSpeed;
+
+            if (Input.GetAxis("RightJoystickHorizontal") != 0 || Input.GetAxis("RightJoystickVertical") != 0)
+            {
+                yRot += Input.GetAxis("RightJoystickHorizontal") * _rotateSpeed;
+                xRot += Input.GetAxis("RightJoystickVertical") * -(_rotateSpeed);
+            }
 
             xRot = Mathf.Clamp(xRot, -90f, 90f);
 
