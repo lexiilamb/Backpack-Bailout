@@ -42,7 +42,6 @@ public class DialogueManager : MonoBehaviour
     {
         if(sentences.Count == 0)
         {
-            //dialogueText.text = "";
             EndDialogue();
             return;
         }

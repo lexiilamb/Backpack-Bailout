@@ -402,9 +402,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   low: {fileID: 60403812}
-  high: {fileID: 60403812}
+  high: {fileID: 60403814}
   dialogueManger: {fileID: 2135637448}
   pushToTalk: {fileID: 832865038}
+  karmaNeededToProceed: 0
+--- !u!114 &60403814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60403811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8621168004865654e8452a3bbc2cb710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Professor
+    sentences:
+    - You're supposed to be studying!
+    - Also, Claire was asking where you were.
 --- !u!1001 &66274448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2493,9 +2511,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   low: {fileID: 562245062}
-  high: {fileID: 562245062}
+  high: {fileID: 562245064}
   dialogueManger: {fileID: 2135637448}
   pushToTalk: {fileID: 832865038}
+  karmaNeededToProceed: 0
+--- !u!114 &562245064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562245061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8621168004865654e8452a3bbc2cb710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Kaya
+    sentences:
+    - My dude, Claire is looking for you.
+    - Stay chill, peace.
 --- !u!1001 &602729256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2863,6 +2899,7 @@ MonoBehaviour:
   high: {fileID: 721581141}
   dialogueManger: {fileID: 2135637448}
   pushToTalk: {fileID: 832865038}
+  karmaNeededToProceed: 0
 --- !u!114 &721581141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3804,9 +3841,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   low: {fileID: 1232979247}
-  high: {fileID: 1232979247}
+  high: {fileID: 1232979249}
   dialogueManger: {fileID: 2135637448}
   pushToTalk: {fileID: 832865038}
+  karmaNeededToProceed: 0
+--- !u!114 &1232979249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232979246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8621168004865654e8452a3bbc2cb710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: AJ
+    sentences:
+    - Oh shoot, I have to go clean the Administration room.
+    - Sorry, I'm in a rush. I heard Claire wanted you for something though.
 --- !u!1001 &1235708418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6195,6 +6250,7 @@ MonoBehaviour:
   high: {fileID: 2035943667}
   dialogueManger: {fileID: 2135637448}
   pushToTalk: {fileID: 832865038}
+  karmaNeededToProceed: 0
 --- !u!114 &2035943667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6210,8 +6266,7 @@ MonoBehaviour:
   dialogue:
     name: Sally
     sentences:
-    - You're pretty popular, aren't you?
-    - 'Bet anyone would be willing to help you out if you needed '
+    - Claire said she was looking for you.
 --- !u!114 &2035943671
 MonoBehaviour:
   m_ObjectHideFlags: 0

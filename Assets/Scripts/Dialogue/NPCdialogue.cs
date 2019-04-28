@@ -19,8 +19,8 @@ public class NPCdialogue : MonoBehaviour
     private IEnumerator dialogueCoroutine;
 
     private int karma = 0;
-    private int difficulty = 0;
-    private int karmaNeededToProceed = 0;
+    private int difficulty = 1;
+    public int karmaNeededToProceed;
 
     // Dialogue flags
     private bool startedDialogue = false;
@@ -119,7 +119,7 @@ public class NPCdialogue : MonoBehaviour
                         dialogueManger.DisplayNextSentence();
 
                         // If there are no more messages in NPC dialogue script
-                        if (finishedDialogue)
+                        if (dialogueManger.finished)
                         {
                             startedDialogue = false;
                             dialogueManger.finished = false;
@@ -135,6 +135,8 @@ public class NPCdialogue : MonoBehaviour
                                 GameObject.FindWithTag("Player").GetComponent<CharacterControl>().changeAltToggle = true;
                                 playerMovementStopped = false;
                             }
+
+                            GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().SetCountText();
                         }
                     }
 
@@ -142,11 +144,11 @@ public class NPCdialogue : MonoBehaviour
                     else
                     {
                         startedDialogue = true;
-                        GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().SetCountText();
 
                         // if collosion.karam < karmaNeededToProceed
                         if (karma < karmaNeededToProceed)
                         {
+                            Debug.Log(karma);
                             low.TriggerDialogue();
                             dialogueCoroutine = startTalking();
                             StartCoroutine(dialogueCoroutine);
@@ -160,6 +162,7 @@ public class NPCdialogue : MonoBehaviour
                                 GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().claireAskedForHelp = true;
                             }
 
+                            Debug.Log(karma);
                             high.TriggerDialogue();
                             dialogueCoroutine = startTalking();
                             StartCoroutine(dialogueCoroutine);
