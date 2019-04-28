@@ -97,12 +97,15 @@ public class NPCdialogue : MonoBehaviour
                 //look at the player 
                 NPC.transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
 
+                Debug.Log("Just hit F key");
 
                 // Hide push to talk message after beginning conversation
                 pushToTalk.gameObject.SetActive(false);
 
                 if(!playerMovementStopped)
                 {
+                    Debug.Log("Stopping player movement");
+
                     // Stop player movement 
                     GameObject.FindWithTag("Player").GetComponent<CharacterControl>().changeAltToggle = true;
                     playerMovementStopped = true;
@@ -111,6 +114,9 @@ public class NPCdialogue : MonoBehaviour
                 // Also disable text/button that prompted player to hit button
                 if (continueTalking)
                 {
+
+                    Debug.Log("continue talking");
+
                     continueTalking = false;
 
                     // Display the reset of the messages in NPC dialogue script
@@ -121,20 +127,14 @@ public class NPCdialogue : MonoBehaviour
                         // If there are no more messages in NPC dialogue script
                         if (dialogueManger.finished)
                         {
+                            Debug.Log("Finished talking, resume player movement");
+
                             startedDialogue = false;
                             dialogueManger.finished = false;
 
-                            // Start pong game with Ron
-                            if (gameObject.tag == "Ron")
-                            {
-                                GameObject.FindWithTag("Pong").GetComponent<startPong>().startGamePong = true;
-                            }
-                            else
-                            {
-                                // Resume player movement 
-                                GameObject.FindWithTag("Player").GetComponent<CharacterControl>().changeAltToggle = true;
-                                playerMovementStopped = false;
-                            }
+                            // Resume player movement 
+                            GameObject.FindWithTag("Player").GetComponent<CharacterControl>().changeAltToggle = true;
+                            playerMovementStopped = false;
 
                             GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().SetCountText();
                         }
@@ -143,12 +143,16 @@ public class NPCdialogue : MonoBehaviour
                     // If this is the first message in NPC dialogue script 
                     else
                     {
+                        Debug.Log("Start first message");
+
                         startedDialogue = true;
 
                         // if collosion.karam < karmaNeededToProceed
                         if (karma < karmaNeededToProceed)
                         {
+                            Debug.Log("Start low dialogue");
                             Debug.Log(karma);
+
                             low.TriggerDialogue();
                             dialogueCoroutine = startTalking();
                             StartCoroutine(dialogueCoroutine);
@@ -157,6 +161,8 @@ public class NPCdialogue : MonoBehaviour
                         // if collosion.karam >= karmaNeededToProceed
                         else if (karma >= karmaNeededToProceed)
                         {
+                            Debug.Log("Start high dialogue");
+
                             if (gameObject.tag == "Claire")
                             {
                                 GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().claireAskedForHelp = true;
