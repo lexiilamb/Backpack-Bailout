@@ -120,6 +120,7 @@ public class NPCdialogue : MonoBehaviour
                                 playerMovementStopped = false;
                             }
 
+                            GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().SetCountText();
                         }
                     }
 
