@@ -44,9 +44,6 @@ public class CharacterControl : MonoBehaviour {
             yRot += Input.GetAxis("Mouse X") * _rotateSpeed;
             xRot += Input.GetAxis("Mouse Y") * -(_rotateSpeed);
 
-            Debug.Log("horizontal rotation is " + xRot);
-            Debug.Log("vertical rotation is " + yRot);
-
             xRot = Mathf.Clamp(xRot, -90f, 90f);
 
             transform.rotation = Quaternion.Euler(0, yRot, 0);
