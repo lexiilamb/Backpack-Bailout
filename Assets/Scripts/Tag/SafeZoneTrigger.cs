@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SafeZoneTrigger : MonoBehaviour
 {
+    public bool canDestroy = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +15,17 @@ public class SafeZoneTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // If game is over = player collected all objects
+        if (GameObject.FindWithTag("AJ").GetComponent<standingAJ>().finishedCollecting)
+        {
+            if(canDestroy)
+            {
+                canDestroy = false; 
+
+                // Destroy object
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     void OnTriggerEnter(Collider collision)

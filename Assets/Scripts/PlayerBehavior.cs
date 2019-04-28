@@ -20,8 +20,8 @@ public class PlayerBehavior : MonoBehaviour
 
     // NPC interaction flags
     public bool claireAskedForHelp = false;
-    public bool wonPong = false;
     public bool wonGame = false;
+    private bool displayedWinCanvas = false;
     public bool checkWonGame = true;
 
     // Start is called before the first frame update
@@ -39,6 +39,8 @@ public class PlayerBehavior : MonoBehaviour
     {
         if(wonGame)
         {
+            Debug.Log("Game won");
+
             wonGame = false;
             GameWon();
         }
@@ -46,10 +48,14 @@ public class PlayerBehavior : MonoBehaviour
 
     public void GameWon()
     {
-        // Freeze game and display win canvas
-        _AudioSource.clip = _AudioClip1;
-        _AudioSource.Play();
-        winCanvas.gameObject.SetActive(true);
+        if (!displayedWinCanvas)
+        {
+            displayedWinCanvas = true;
+            // Display win canvas
+            _AudioSource.clip = _AudioClip1;
+            _AudioSource.Play();
+            winCanvas.gameObject.SetActive(true);
+        }
     }
 
     public void SetCountText()

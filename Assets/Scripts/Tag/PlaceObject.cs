@@ -94,9 +94,11 @@ public class PlaceObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
+        if(!GameObject.FindWithTag("AJ").GetComponent<standingAJ>().finishedCollecting)
+        {
+            currentTime += Time.deltaTime;
+        }
         setTime.text = "Time: " + currentTime.ToString("F2") + " seconds";
-        checkIfWon();
     }
 
     IEnumerator placeThisObject(GameObject objects)
@@ -118,9 +120,20 @@ public class PlaceObject : MonoBehaviour
                     // Only allow a full shelf to enable AJ category switch once
                     if (!checkedT)
                     {
-                        // Disable current category dialogue and allow new category to be picked
+                        // Disable current category dialogue
                         GameObject.FindWithTag("AJ").GetComponent<standingAJ>().ajDialogueCategoriesFlags[shelfCategory] = false;
-                        GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canPickNextCategory = true;
+
+                        // If all categories have been collected 
+                        if (GameObject.FindWithTag("AJ").GetComponent<standingAJ>().checkIfAllCategoriesCollected())
+                        {
+                            // Enable finished collecting dialogue 
+                            GameObject.FindWithTag("AJ").GetComponent<standingAJ>().finishedCollecting = true;
+                        }
+                        else
+                        {
+                            // Allow new category to be picked
+                            GameObject.FindWithTag("AJ").GetComponent<standingAJ>().canPickNextCategory = true;
+                        }       
                     }
                 }
             }
@@ -166,23 +179,6 @@ public class PlaceObject : MonoBehaviour
         {
             GameObject hideObject = objectGroup.transform.GetChild(3 - i).gameObject;
             hideObject.SetActive(false);
-        }
-    }
-
-    public void checkIfWon()
-    {
-        if (categoryCounters[tabletsIndex] == numToDeactivate)
-        {
-            if (categoryCounters[calculatorsIndex] == numToDeactivate)
-            {
-                if (categoryCounters[notebooksIndex] == numToDeactivate)
-                {
-                    if (categoryCounters[laptopsIndex] == numToDeactivate)
-                    {
-                        GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().wonGame = true;
-                    }
-                }
-            }
         }
     }
 }

@@ -5787,7 +5787,7 @@ MonoBehaviour:
     name: AJ
     sentences:
     - Thanks for helping me clean up!
-    - I'll let you in the room!
+    - I'll make sure to give Claire her backpack back!
 --- !u!1001 &190780029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7597,6 +7597,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246955154}
   m_CullTransparentMesh: 0
+--- !u!1 &249998858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 249998859}
+  m_Layer: 0
+  m_Name: Zones
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &249998859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249998858}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -17.0749, y: 66.23776, z: 4.135065}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2085874256}
+  - {fileID: 1151610094}
+  - {fileID: 407573006}
+  - {fileID: 368545685}
+  m_Father: {fileID: 1003847714}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &252458661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11340,11 +11374,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368545684}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -53.287, y: 64.04, z: -0.682}
+  m_LocalPosition: {x: -36.212097, y: -2.1977615, z: -4.8170652}
   m_LocalScale: {x: 25.484123, y: 1, z: 30.898113}
   m_Children: []
-  m_Father: {fileID: 1003847714}
-  m_RootOrder: 4
+  m_Father: {fileID: 249998859}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &368545686
 MonoBehaviour:
@@ -11358,6 +11392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a81755ab7854412a0800aa1f17d0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDestroy: 1
 --- !u!65 &368545687
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12513,6 +12548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a81755ab7854412a0800aa1f17d0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDestroy: 1
 --- !u!65 &401367219
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12855,11 +12891,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 407573005}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.8612, y: 63.79, z: 10.709}
+  m_LocalPosition: {x: 32.9361, y: -2.4477615, z: 6.5739346}
   m_LocalScale: {x: 7.0534325, y: 0.1, z: 5.778489}
   m_Children: []
-  m_Father: {fileID: 1003847714}
-  m_RootOrder: 3
+  m_Father: {fileID: 249998859}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &407573007
 MonoBehaviour:
@@ -12873,6 +12909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a81755ab7854412a0800aa1f17d0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDestroy: 1
 --- !u!65 &407573008
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29376,11 +29413,8 @@ Transform:
   m_LocalPosition: {x: 30.54817, y: -63.830093, z: 3.505881}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 249998859}
   - {fileID: 1028733574}
-  - {fileID: 2085874256}
-  - {fileID: 1151610094}
-  - {fileID: 407573006}
-  - {fileID: 368545685}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29953,7 +29987,7 @@ Transform:
   - {fileID: 401367217}
   - {fileID: 1359498780}
   m_Father: {fileID: 1003847714}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1029092609
 PrefabInstance:
@@ -33415,11 +33449,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151610093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.972, y: 63.79, z: -12.128}
+  m_LocalPosition: {x: 33.0469, y: -2.4477615, z: -16.263065}
   m_LocalScale: {x: 6.831692, y: 0.1, z: 5.095666}
   m_Children: []
-  m_Father: {fileID: 1003847714}
-  m_RootOrder: 2
+  m_Father: {fileID: 249998859}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1151610095
 MonoBehaviour:
@@ -33433,6 +33467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a81755ab7854412a0800aa1f17d0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDestroy: 1
 --- !u!65 &1151610096
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37882,6 +37917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a81755ab7854412a0800aa1f17d0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDestroy: 1
 --- !u!65 &1359498782
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47930,10 +47966,12 @@ MonoBehaviour:
   calculators: {fileID: 1806496304}
   notebooks: {fileID: 798350244}
   laptops: {fileID: 1825794692}
+  storageShelfObjects: []
   tabInventory: {fileID: 408214277}
   calcInventory: {fileID: 2104307857}
   notebookInventory: {fileID: 1920923259}
   laptopInventory: {fileID: 2019367587}
+  inventoryObjectsArray: []
   amountCollected: 00000000000000000000000000000000
   numToDeactivate: 2
 --- !u!82 &1720611966
@@ -57696,12 +57734,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085874255}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.677, y: 64.04, z: -0.173}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.3978996, y: -2.1977615, z: -4.3080654}
   m_LocalScale: {x: 8.691717, y: 1, z: 6.617372}
   m_Children: []
-  m_Father: {fileID: 1003847714}
-  m_RootOrder: 1
+  m_Father: {fileID: 249998859}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2085874257
 MonoBehaviour:
@@ -57715,6 +57753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a81755ab7854412a0800aa1f17d0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDestroy: 1
 --- !u!65 &2085874258
 BoxCollider:
   m_ObjectHideFlags: 0

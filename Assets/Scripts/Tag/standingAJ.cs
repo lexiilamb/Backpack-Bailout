@@ -36,6 +36,8 @@ public class standingAJ : MonoBehaviour
     private bool startedDialogue = false;
     private bool finishedDialogue = false;
     private bool continueTalking = true;
+    // Check if AJ has gone through all categories
+    private bool allTrue = true;
 
     private IEnumerator dialogueCoroutine;
 
@@ -60,6 +62,21 @@ public class standingAJ : MonoBehaviour
     void Update()
     {
         finishedDialogue = dialogueManger.finished;
+    }
+
+    public bool checkIfAllCategoriesCollected()
+    {
+        allTrue = true;
+        for(int i = 0; i < activeArray.Length; i++)
+        {
+            if(!activeArray[i])
+            {
+                allTrue = false;
+                break;
+            }
+        }
+
+        return allTrue;
     }
 
     public void pickObjectCategory()
@@ -137,6 +154,12 @@ public class standingAJ : MonoBehaviour
                         // If there are no more messages in NPC dialogue script
                         if (finishedDialogue)
                         {
+                            // Display win screen after finishing game and talking to AJ
+                            if (finishedCollecting)
+                            {
+                                GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().wonGame = true;
+                            }
+
                             startedDialogue = false;
                             dialogueManger.finished = false;
 
@@ -150,33 +173,36 @@ public class standingAJ : MonoBehaviour
                     {
                         startedDialogue = true;
 
-                        // Pick category to find
-                        pickObjectCategory();
-
-                        // if finding tablets
-                        if (ajDialogueCategoriesFlags[tabletsIndex] == true)
-                        {
-                            tabletDialogue.TriggerDialogue();
-                        }
-                        // if finding calculators
-                        if (ajDialogueCategoriesFlags[calculatorsIndex] == true)
-                        {
-                            calculatorDialogue.TriggerDialogue();
-                        }
-                        // if finding notebooks
-                        if (ajDialogueCategoriesFlags[notebooksIndex] == true)
-                        {
-                            notebookDialogue.TriggerDialogue();
-                        }
-                        // if finding laptops
-                        if (ajDialogueCategoriesFlags[laptopsIndex] == true)
-                        {
-                            laptopDialogue.TriggerDialogue();
-                        }
-                        // if finding laptops
-                        if (finishedCollecting == true)
+                        // Check if collection is finished or if new category should be picked
+                        if(finishedCollecting)
                         {
                             finished.TriggerDialogue();
+                        }
+                        else
+                        {
+                            // Pick category to find
+                            pickObjectCategory();
+
+                            // if finding tablets
+                            if (ajDialogueCategoriesFlags[tabletsIndex] == true)
+                            {
+                                tabletDialogue.TriggerDialogue();
+                            }
+                            // if finding calculators
+                            if (ajDialogueCategoriesFlags[calculatorsIndex] == true)
+                            {
+                                calculatorDialogue.TriggerDialogue();
+                            }
+                            // if finding notebooks
+                            if (ajDialogueCategoriesFlags[notebooksIndex] == true)
+                            {
+                                notebookDialogue.TriggerDialogue();
+                            }
+                            // if finding laptops
+                            if (ajDialogueCategoriesFlags[laptopsIndex] == true)
+                            {
+                                laptopDialogue.TriggerDialogue();
+                            }
                         }
 
                         dialogueCoroutine = startTalking();

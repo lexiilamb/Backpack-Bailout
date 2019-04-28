@@ -17,10 +17,13 @@ public class TagAI : MonoBehaviour
     public bool ChadLeftDestination = true;
     public bool safeZone = false;
 
+    public bool canDestroy = true;
+
     //win-lose state
     public bool chadCaughtPlayer = false;
-
     private int difficulty = 0;
+
+    private IEnumerator dialogueCoroutine;
 
     enum Animation
     {
@@ -91,46 +94,69 @@ public class TagAI : MonoBehaviour
     //Runs every frame
     void Update()
     {
-        if (player != null)
+        // If game is over = player collected all objects
+        if(GameObject.FindWithTag("AJ").GetComponent<standingAJ>().finishedCollecting)
         {
-            //If the target is in the safezone and not viewable then peruse (look around) the room
-            //If the target is not in the safezone then check if it is within the viewcone
-            //  If the target is within the viewcone then check if NPC is within the stopping distance
-            //      If NPC is within the stopping distance then stop and punch the target
-            //      else run towards the target at a faster speed
-            //  If the target is not within the viewcone and not in the safezone then walk around the room looking for the target
-            if (safeZone)
+            if(canDestroy)
             {
-                if (wandering)
-                {
-                    Wander();
-                }
-            }
-            else
-            {
-                // Can find a new object to wander to next time Wander is executed
-                newDestination = true;
+                canDestroy = false;
 
-                if (target.viewable)
+                dialogueCoroutine = gameOverChad();
+                StartCoroutine(dialogueCoroutine);
+            }
+        }
+        // Else continue like normal
+        else
+        {
+            if (player != null)
+            {
+                //If the target is in the safezone and not viewable then peruse (look around) the room
+                //If the target is not in the safezone then check if it is within the viewcone
+                //  If the target is within the viewcone then check if NPC is within the stopping distance
+                //      If NPC is within the stopping distance then stop and punch the target
+                //      else run towards the target at a faster speed
+                //  If the target is not within the viewcone and not in the safezone then walk around the room looking for the target
+                if (safeZone)
                 {
-                    if (tagAI.remainingDistance <= tagAI.stoppingDistance)
+                    if (wandering)
                     {
-                        // Let PlayerLives script know a heart needs to be removed
-                        chadCaughtPlayer = true;
-                        Punch();
-                    }
-                    else
-                    {
-                        Chase();
+                        Wander();
                     }
                 }
-                else if (!target.viewable)
+                else
                 {
-                    //pursue the target
-                    Pursue();
+                    // Can find a new object to wander to next time Wander is executed
+                    newDestination = true;
+
+                    if (target.viewable)
+                    {
+                        if (tagAI.remainingDistance <= tagAI.stoppingDistance)
+                        {
+                            // Let PlayerLives script know a heart needs to be removed
+                            chadCaughtPlayer = true;
+                            Punch();
+                        }
+                        else
+                        {
+                            Chase();
+                        }
+                    }
+                    else if (!target.viewable)
+                    {
+                        //pursue the target
+                        Pursue();
+                    }
                 }
             }
         }
+    }
+
+    IEnumerator gameOverChad()
+    {
+        yield return new WaitForSeconds(1);
+
+        // Destroy object
+        Destroy(this.gameObject);
     }
 
     IEnumerator TurnChad(int directionToTurn)
