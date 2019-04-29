@@ -52,6 +52,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             displayedWinCanvas = true;
             // Display win canvas
+            _AudioSource.loop = false;
             _AudioSource.clip = _AudioClip1;
             _AudioSource.Play();
             winCanvas.gameObject.SetActive(true);
