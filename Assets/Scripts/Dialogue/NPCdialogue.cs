@@ -58,7 +58,11 @@ public class NPCdialogue : MonoBehaviour
     void Update()
     {
 
+<<<<<<< HEAD
         if (triggerExit)
+=======
+		if(triggerExit)
+>>>>>>> 041be359e4db45dee8d885f0384695d37f883fdc
         {
             StartCoroutine(TurnToOriginalPosition());
         }
@@ -131,7 +135,11 @@ public class NPCdialogue : MonoBehaviour
             {
                 if (Input.GetButtonDown("Fire1"))
                 {
+<<<<<<< HEAD
                     if (!(this.gameObject.name == "Sally"))
+=======
+                    if(!(this.gameObject.name == "Sally"))
+>>>>>>> 041be359e4db45dee8d885f0384695d37f883fdc
                     {
                         // Initiate object rotation to face the player
                         StartCoroutine(TurnTowardsPlayer());
