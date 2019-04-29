@@ -27,6 +27,10 @@ public class NPCdialogue : MonoBehaviour
     private bool playerMovementStopped = false;
     private bool pleaseDontRepeatDialogue = true;
 
+    //NPC Rotation Params
+    float rotationSpeed = 0.5f;
+    Quaternion originalRotation;
+    bool triggerExit = false;
 
     // Start is called before the first frame update
     void Start()

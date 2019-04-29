@@ -44,6 +44,11 @@ public class standingAJ : MonoBehaviour
     public int typesOfObjects = 4;
     bool[] activeArray;
 
+    //AJ Rotation Params
+    float rotationSpeed = 0.5f;
+    Quaternion originalRotation;
+    bool triggerExit = false;
+
     // Start is called before the first frame update
     void Start()
     {
