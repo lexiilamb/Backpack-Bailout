@@ -83,5 +83,4 @@ public class CharacterControl : MonoBehaviour {
             altToggle = true;
         }
     }
-
 }

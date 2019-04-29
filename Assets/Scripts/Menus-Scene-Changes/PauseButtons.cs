@@ -12,10 +12,12 @@ public class PauseButtons : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    public GameObject volumeMenu;
 
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        volumeMenu.SetActive(false);
         // Unfreeze game
         Time.timeScale = 1f;
         GameIsPaused = false;
