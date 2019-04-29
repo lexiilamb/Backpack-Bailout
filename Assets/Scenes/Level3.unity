@@ -10285,6 +10285,7 @@ MonoBehaviour:
   loadToColor: {r: 0, g: 0, b: 0, a: 1}
   speed: 1
   pauseMenuUI: {fileID: 0}
+  volumeMenu: {fileID: 0}
 --- !u!114 &323790289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23798,6 +23799,7 @@ MonoBehaviour:
   loadToColor: {r: 0, g: 0, b: 0, a: 1}
   speed: 1
   pauseMenuUI: {fileID: 0}
+  volumeMenu: {fileID: 0}
 --- !u!114 &802864526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41096,6 +41098,7 @@ MonoBehaviour:
   loadToColor: {r: 0, g: 0, b: 0, a: 1}
   speed: 1
   pauseMenuUI: {fileID: 1434174900}
+  volumeMenu: {fileID: 0}
 --- !u!114 &1478325361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50714,6 +50717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1434174900}
+  volumeMenu: {fileID: 0}
 --- !u!114 &1817009496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61253,6 +61257,36 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7606323177335998175}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7606323177335998177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606323177335998176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8621168004865654e8452a3bbc2cb710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Chad
+    sentences:
+    - FINE! YOU WIN, I'M GOING HOME!
+--- !u!114 &7606323177335998178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606323177335998176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cfbf9f9deaeec428ca4196688f597b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManger: {fileID: 104261767}
+  ChadEnd: {fileID: 7606323177335998177}
 --- !u!82 &7606323177335998179
 AudioSource:
   m_ObjectHideFlags: 0
