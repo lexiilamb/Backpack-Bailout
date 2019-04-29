@@ -61287,6 +61287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManger: {fileID: 104261767}
   ChadEnd: {fileID: 7606323177335998177}
+  waitTime: 4
 --- !u!82 &7606323177335998179
 AudioSource:
   m_ObjectHideFlags: 0
