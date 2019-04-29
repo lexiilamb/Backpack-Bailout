@@ -24,11 +24,11 @@ public class TutorialPlayButton : MonoBehaviour
 
     IEnumerator freezeTime()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         Time.timeScale = 0f;
     }
 
-        public void SkipTutorial()
+    public void SkipTutorial()
     {
         // Load level 3
         Time.timeScale = 1f;
@@ -41,5 +41,6 @@ public class TutorialPlayButton : MonoBehaviour
         Destroy(skip);
         // Unfreeze game
         Time.timeScale = 1f;
+        GameObject.FindWithTag("TutorialResume").GetComponent<TutorialResume>().skipMenuDestroyed = true;
     }
 }

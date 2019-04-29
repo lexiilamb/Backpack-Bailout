@@ -30,6 +30,7 @@ TagManager:
   - ChadWanderObject
   - Difficulty
   - NoticeBoard
+  - TutorialResume
   layers:
   - Default
   - TransparentFX

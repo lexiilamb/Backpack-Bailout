@@ -9,6 +9,9 @@ public class TutorialCollect : MonoBehaviour
     public GameObject prompt;
     public GameObject xOutLaptopsUI;
 
+    // Prevent objects from being counted twice
+    private bool canDestroyObject = true;
+
     private IEnumerator collectedObject;
 
 
@@ -44,6 +47,7 @@ public class TutorialCollect : MonoBehaviour
 
     public void startDestroyCoroutine()
     {
+        canDestroyObject = false;
         collectedObject = destroyObject();
         StartCoroutine(collectedObject);
     }
@@ -55,7 +59,8 @@ public class TutorialCollect : MonoBehaviour
             // Collect object if talked to AJ
             if (GameObject.FindWithTag("AJ").GetComponent<TutorialAJ>().canCollectLaptop)
             {
-                startDestroyCoroutine();
+                if(canDestroyObject)
+                    startDestroyCoroutine();
             }
             else
             {
