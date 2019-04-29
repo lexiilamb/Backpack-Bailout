@@ -61,7 +61,7 @@ public class standingAJ : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        finishedDialogue = dialogueManger.finished;
+        
     }
 
     public bool checkIfAllCategoriesCollected()
@@ -149,14 +149,17 @@ public class standingAJ : MonoBehaviour
                     // Display the reset of the messages in NPC dialogue script
                     if (startedDialogue)
                     {
+                       
                         dialogueManger.DisplayNextSentence();
 
                         // If there are no more messages in NPC dialogue script
-                        if (finishedDialogue)
+                        if (dialogueManger.finished)
                         {
+                           
                             // Display win screen after finishing game and talking to AJ
                             if (finishedCollecting)
                             {
+                              
                                 GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().wonGame = true;
                             }
 

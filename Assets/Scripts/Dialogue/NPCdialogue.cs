@@ -100,15 +100,11 @@ public class NPCdialogue : MonoBehaviour
                     //look at the player 
                     NPC.transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
 
-                    Debug.Log("Just hit F key");
-
                     // Hide push to talk message after beginning conversation
                     pushToTalk.gameObject.SetActive(false);
 
                     if (!playerMovementStopped)
                     {
-                        Debug.Log("Stopping player movement");
-
                         // Stop player movement 
                         GameObject.FindWithTag("Player").GetComponent<CharacterControl>().changeAltToggle = true;
                         playerMovementStopped = true;
@@ -117,22 +113,16 @@ public class NPCdialogue : MonoBehaviour
                     // Also disable text/button that prompted player to hit button
                     if (continueTalking)
                     {
-
-                        Debug.Log("continue talking");
-
                         continueTalking = false;
 
                         // Display the reset of the messages in NPC dialogue script
                         if (startedDialogue)
                         {
-                            Debug.Log("displayed NEXT message");
                             dialogueManger.DisplayNextSentence();
 
                             // If there are no more messages in NPC dialogue script
                             if (dialogueManger.finished)
                             {
-                                Debug.Log("Finished talking, resume player movement");
-
                                 startedDialogue = false;
                                 dialogueManger.finished = false;
 
@@ -148,14 +138,11 @@ public class NPCdialogue : MonoBehaviour
                         // If this is the first message in NPC dialogue script 
                         else
                         {
-                            Debug.Log("Start first message");
-
                             startedDialogue = true;
 
                             // if collosion.karam < karmaNeededToProceed
                             if (karma > karmaNeededToProceed)
                             {
-                                Debug.Log("Start high dialogue");
 
                                 if (gameObject.tag == "Claire")
                                 {
@@ -170,7 +157,6 @@ public class NPCdialogue : MonoBehaviour
                             // if collosion.karam >= karmaNeededToProceed
                             else
                             {
-                                Debug.Log("Start low dialogue");
                                 low.TriggerDialogue();
                                 dialogueCoroutine = startTalking();
                                 StartCoroutine(dialogueCoroutine);
