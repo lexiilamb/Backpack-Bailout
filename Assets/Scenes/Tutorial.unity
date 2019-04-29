@@ -39879,6 +39879,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laptop_On
       objectReference: {fileID: 0}
+    - target: {fileID: 1854088177708203295, guid: 8097e778cb45d4d4797324ab831a2daa,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: b82c5a7c78bbb9d47b74af09ac96cff5,
+        type: 2}
     - target: {fileID: 1649743670188020089, guid: 8097e778cb45d4d4797324ab831a2daa,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -2286,14 +2286,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6805708258262944, guid: a6a2dddf4364b4a48a1b7de657d096c6, type: 3}
-      propertyPath: _moveSpeed
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5483910912710108800, guid: a6a2dddf4364b4a48a1b7de657d096c6,
         type: 3}
       propertyPath: field of view
       value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805708258262944, guid: a6a2dddf4364b4a48a1b7de657d096c6, type: 3}
+      propertyPath: _moveSpeed
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6a2dddf4364b4a48a1b7de657d096c6, type: 3}
@@ -6411,6 +6411,12 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2885513394337778140, guid: 22675ee14d9511343a11dbb16f6dd22b,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: b82c5a7c78bbb9d47b74af09ac96cff5,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22675ee14d9511343a11dbb16f6dd22b, type: 3}
 --- !u!82 &1729517751 stripped
@@ -7896,6 +7902,11 @@ PrefabInstance:
       propertyPath: myButton
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1940769938, guid: ed5a0a83fef96254ab0a0b1fbb23cc60, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: b82c5a7c78bbb9d47b74af09ac96cff5,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed5a0a83fef96254ab0a0b1fbb23cc60, type: 3}
 --- !u!114 &2135637448 stripped
