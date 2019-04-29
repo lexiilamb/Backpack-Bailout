@@ -17,6 +17,11 @@ public class changeFirstSelected : MonoBehaviour
             Debug.Log("UH oh, mouse clicked");
             updateFirstSelected();
         }
+
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            updateFirstSelected();
+        }
     }
 
     // Update is called once per frame

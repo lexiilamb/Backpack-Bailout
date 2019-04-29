@@ -211,9 +211,6 @@ public class standingAJ : MonoBehaviour
 
                             startedDialogue = false;
                             dialogueManger.finished = false;
-
-                            // Resume player movement 
-                            GameObject.FindWithTag("Player").GetComponent<CharacterControl>().changeAltToggle = true;
                         }
                     }
 
