@@ -920,7 +920,7 @@ GameObject:
   - component: {fileID: 450746567}
   - component: {fileID: 450746566}
   m_Layer: 5
-  m_Name: Description (1)
+  m_Name: Controller Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -978,9 +978,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'A: navigate dialogue, select menu items
+  m_Text: 'A: navigate dialogue and interact
 
-    B: toggle dialogue mode'
+    START: Pause menu'
 --- !u!222 &450746567
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2958,7 +2958,7 @@ GameObject:
   - component: {fileID: 1553557953}
   - component: {fileID: 1553557952}
   m_Layer: 5
-  m_Name: Description
+  m_Name: Keyboard Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3016,11 +3016,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Left ctrl: navigate dialogue
+  m_Text: 'F: navigate dialogue and interact
 
-    Left alt: toggle dialogue mode
-
-    Enter: select menu items'
+    P: pause menu'
 --- !u!222 &1553557953
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3064,11 +3062,11 @@ RectTransform:
   m_Father: {fileID: 1619461799}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -300}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 47}
   m_SizeDelta: {x: 110, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1560515616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4326,11 +4324,11 @@ RectTransform:
   m_Father: {fileID: 292511196}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -300}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 47}
   m_SizeDelta: {x: 110, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2069996712
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -46,21 +46,7 @@ public class NPCdialogue : MonoBehaviour
         pushToTalk.gameObject.SetActive(false);
 
         // Set karmaNeededToProceed based on game difficulty
-        // Easy
-        if(difficulty == 0)
-        {
-            karmaNeededToProceed = 2;
-        }
-        // Medium
-        if (difficulty == 1)
-        {
-            karmaNeededToProceed = 4;
-        }
-        // Hard
-        if (difficulty == 2)
-        {
-            karmaNeededToProceed = 7;
-        }
+        karmaNeededToProceed = 5;
 
         //initiate player
         player = GameObject.FindGameObjectWithTag("Player");

@@ -6536,6 +6536,7 @@ MonoBehaviour:
   loadToColor: {r: 0, g: 0, b: 0, a: 1}
   speed: 1
   pauseMenuUI: {fileID: 0}
+  volumeMenu: {fileID: 0}
 --- !u!114 &323790289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15754,6 +15755,7 @@ MonoBehaviour:
   loadToColor: {r: 0, g: 0, b: 0, a: 1}
   speed: 1
   pauseMenuUI: {fileID: 0}
+  volumeMenu: {fileID: 0}
 --- !u!114 &802864526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22389,6 +22391,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5483910912710108800, guid: a6a2dddf4364b4a48a1b7de657d096c6,
+        type: 3}
+      propertyPath: field of view
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 8125509290548485583, guid: a6a2dddf4364b4a48a1b7de657d096c6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -26883,6 +26890,7 @@ MonoBehaviour:
   loadToColor: {r: 0, g: 0, b: 0, a: 1}
   speed: 1
   pauseMenuUI: {fileID: 1434174900}
+  volumeMenu: {fileID: 0}
 --- !u!114 &1478325361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33472,6 +33480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1434174900}
+  volumeMenu: {fileID: 0}
 --- !u!114 &1817009496
 MonoBehaviour:
   m_ObjectHideFlags: 0
