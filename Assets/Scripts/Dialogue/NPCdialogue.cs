@@ -8,6 +8,7 @@ public class NPCdialogue : MonoBehaviour
 
     //player and AJ
     GameObject player;
+    GameObject sally;
 
 
     public DialogueTrigger low;
@@ -35,9 +36,9 @@ public class NPCdialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		//store NPC original rotation
+        //store NPC original rotation
         originalRotation = transform.rotation;
-		
+
         // Get karma score from main player
         karma = GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().count;
         difficulty = GameDifficulty.gameDifficulty;
@@ -50,12 +51,14 @@ public class NPCdialogue : MonoBehaviour
 
         //initiate player
         player = GameObject.FindGameObjectWithTag("Player");
+        sally = GameObject.Find("Sally");
     }
 
     // Update is called once per frame
     void Update()
     {
-		if(triggerExit)
+
+        if (triggerExit)
         {
             StartCoroutine(TurnToOriginalPosition());
         }
@@ -63,7 +66,7 @@ public class NPCdialogue : MonoBehaviour
         {
             StopCoroutine(TurnToOriginalPosition());
         }
-		
+
         // Update karma score from main player
         karma = GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().count;
         finishedDialogue = dialogueManger.finished;
@@ -75,8 +78,8 @@ public class NPCdialogue : MonoBehaviour
         yield return new WaitForSeconds(1);
         continueTalking = true;
     }
-	
-	IEnumerator TurnTowardsPlayer()
+
+    IEnumerator TurnTowardsPlayer()
     {
         Vector3 playerPosition = player.transform.position;
         Vector3 npcCurrentPosition = transform.position;
@@ -84,7 +87,7 @@ public class NPCdialogue : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(playerPosition - npcCurrentPosition);
 
         //keep rotating while the NPC is not facing the player
-        while(transform.rotation != targetRotation)
+        while (transform.rotation != targetRotation)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
@@ -102,7 +105,7 @@ public class NPCdialogue : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, originalRotation, rotationSpeed * Time.deltaTime);
             transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
-          
+
             yield return null;
         }
 
@@ -124,13 +127,17 @@ public class NPCdialogue : MonoBehaviour
         // Start dialogue if player hits "Fire1" (F)
         if (collision.gameObject.tag == "Player")
         {
-            if(pleaseDontRepeatDialogue)
+            if (pleaseDontRepeatDialogue)
             {
                 if (Input.GetButtonDown("Fire1"))
                 {
-                    // Initiate object rotation to face the player
-					StartCoroutine(TurnTowardsPlayer());
-					triggerExit = false;
+                    if (!(this.gameObject.name == "Sally"))
+                    {
+                        // Initiate object rotation to face the player
+                        StartCoroutine(TurnTowardsPlayer());
+                        triggerExit = false;
+                    }
+
 
                     // Hide push to talk message after beginning conversation
                     pushToTalk.gameObject.SetActive(false);
@@ -208,8 +215,15 @@ public class NPCdialogue : MonoBehaviour
         // End dialogue upon player exit
         if (collision.gameObject.tag == "Player")
         {
-            triggerExit = true;
-			
+            if (this.gameObject.name == "Sally")
+            {
+                triggerExit = false;
+            }
+            else
+            {
+                triggerExit = true;
+            }
+
             pushToTalk.gameObject.SetActive(false);
             FindObjectOfType<DialogueManager>().EndDialogue();
             continueTalking = true;
