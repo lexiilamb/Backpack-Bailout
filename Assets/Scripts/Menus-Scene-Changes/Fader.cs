@@ -34,7 +34,6 @@ public class Fader : MonoBehaviour
 
     public void InitiateFader()
     {
-
         DontDestroyOnLoad(gameObject);
 
         //Getting the visual elements
@@ -58,7 +57,6 @@ public class Fader : MonoBehaviour
 
     IEnumerator FadeIt()
     {
-
         while (!start)
         {
             //waiting to start
@@ -80,7 +78,6 @@ public class Fader : MonoBehaviour
                     startedLoading = true;
                     SceneManager.LoadScene(fadeScene);
                 }
-
             }
             else
             {
@@ -90,8 +87,6 @@ public class Fader : MonoBehaviour
                 {
                     hasFadedIn = true;
                 }
-
-
             }
             lastTime = Time.time;
             myCanvas.alpha = alpha;
@@ -99,9 +94,6 @@ public class Fader : MonoBehaviour
         }
 
         Initiate.DoneFading();
-
-        Debug.Log("Your scene has been loaded , and fading in has just ended");
-
         Destroy(gameObject);
 
         yield return null;

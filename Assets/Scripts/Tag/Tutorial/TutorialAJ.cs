@@ -6,9 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class TutorialAJ : MonoBehaviour
 {
+
+    GameObject player;
+
     public string scene = "Level3";
     public Color loadToColor = Color.white;
     public float speed = 3.0f;
+
+    //AJ Rotation Params
+    float rotationSpeed = 0.5f;
+    Quaternion originalRotation;
+    bool triggerExit = false;
 
     public DialogueTrigger generalInstructions;
     public DialogueTrigger collectAndPlaceInstructions;
@@ -32,13 +40,23 @@ public class TutorialAJ : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Get AJ's original Rotation Params
+        originalRotation = transform.rotation;
         pushToTalk.gameObject.SetActive(false);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (triggerExit)
+        {
+            StartCoroutine(TurnToOriginalPosition());
+        }
+        else
+        {
+            StopCoroutine(TurnToOriginalPosition());
+        }
     }
 
     IEnumerator startTalking()
@@ -64,6 +82,10 @@ public class TutorialAJ : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
+                //initiale object rotation to face the player
+                StartCoroutine(TurnTowardsPlayer());
+                triggerExit = false;
+
                 // Hide push to talk message after beginning conversation
                 pushToTalk.gameObject.SetActive(false);
 
@@ -80,22 +102,18 @@ public class TutorialAJ : MonoBehaviour
                         // If there are no more messages in NPC dialogue script
                         if (dialogueManger.finished)
                         {
-                            Debug.Log("Finished dialogue");
                             startedDialogue = false;
                             dialogueManger.finished = false;
 
                             // Load Level 3 if tutorial complete 
-                            if(finalDialogueFlag)
+                            if (finalDialogueFlag)
                             {
-                                Debug.Log("TIME TO PLAY");
                                 Initiate.Fade(scene, loadToColor, speed);
                             }
                             else if (generalDialogueFlag)
                             {
-                                Debug.Log("Finished general");
                                 generalDialogueFlag = false;
                                 collectionDialogueFlag = true;
-                                Debug.Log("collectionDialogueFlag is true");
                             }
                             else if (collectionDialogueFlag)
                             {
@@ -143,6 +161,9 @@ public class TutorialAJ : MonoBehaviour
         // End dialogue upon player exit
         if (collision.gameObject.tag == "Player")
         {
+            //used to initiate TurnToOriginalPosition Coroutine
+            triggerExit = true;
+
             pushToTalk.gameObject.SetActive(false);
             FindObjectOfType<DialogueManager>().EndDialogue();
             continueTalking = true;
@@ -150,5 +171,38 @@ public class TutorialAJ : MonoBehaviour
             dialogueManger.finished = false;
             StopAllCoroutines();
         }
+    }
+
+    IEnumerator TurnTowardsPlayer()
+    {
+        Vector3 playerPosition = player.transform.position;
+        Vector3 npcCurrentPosition = transform.position;
+
+        Quaternion targetRotation = Quaternion.LookRotation(playerPosition - npcCurrentPosition);
+
+        //keep rotating while the NPC is not facing the player
+        while (transform.rotation != targetRotation)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(3.0f);
+    }
+
+    IEnumerator TurnToOriginalPosition()
+    {
+        //keep rotating while the NPC is not facing the player
+        while (transform.rotation != originalRotation)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, originalRotation, rotationSpeed * Time.deltaTime);
+            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(3.0f);
     }
 }
