@@ -36,9 +36,9 @@ public class NPCdialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //store NPC original rotation
+		//store NPC original rotation
         originalRotation = transform.rotation;
-
+		
         // Get karma score from main player
         karma = GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().count;
         difficulty = GameDifficulty.gameDifficulty;
@@ -58,11 +58,7 @@ public class NPCdialogue : MonoBehaviour
     void Update()
     {
 
-<<<<<<< HEAD
-        if (triggerExit)
-=======
 		if(triggerExit)
->>>>>>> 041be359e4db45dee8d885f0384695d37f883fdc
         {
             StartCoroutine(TurnToOriginalPosition());
         }
@@ -70,7 +66,7 @@ public class NPCdialogue : MonoBehaviour
         {
             StopCoroutine(TurnToOriginalPosition());
         }
-
+		
         // Update karma score from main player
         karma = GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().count;
         finishedDialogue = dialogueManger.finished;
@@ -82,8 +78,8 @@ public class NPCdialogue : MonoBehaviour
         yield return new WaitForSeconds(1);
         continueTalking = true;
     }
-
-    IEnumerator TurnTowardsPlayer()
+	
+	IEnumerator TurnTowardsPlayer()
     {
         Vector3 playerPosition = player.transform.position;
         Vector3 npcCurrentPosition = transform.position;
@@ -91,7 +87,7 @@ public class NPCdialogue : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(playerPosition - npcCurrentPosition);
 
         //keep rotating while the NPC is not facing the player
-        while (transform.rotation != targetRotation)
+        while(transform.rotation != targetRotation)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
@@ -109,7 +105,7 @@ public class NPCdialogue : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, originalRotation, rotationSpeed * Time.deltaTime);
             transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
-
+          
             yield return null;
         }
 
@@ -131,15 +127,11 @@ public class NPCdialogue : MonoBehaviour
         // Start dialogue if player hits "Fire1" (F)
         if (collision.gameObject.tag == "Player")
         {
-            if (pleaseDontRepeatDialogue)
+            if(pleaseDontRepeatDialogue)
             {
                 if (Input.GetButtonDown("Fire1"))
                 {
-<<<<<<< HEAD
-                    if (!(this.gameObject.name == "Sally"))
-=======
                     if(!(this.gameObject.name == "Sally"))
->>>>>>> 041be359e4db45dee8d885f0384695d37f883fdc
                     {
                         // Initiate object rotation to face the player
                         StartCoroutine(TurnTowardsPlayer());
