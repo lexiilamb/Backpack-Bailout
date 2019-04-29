@@ -19,7 +19,6 @@ public class MenuFirstSelected : MonoBehaviour
 
         if (myEventSystem.currentSelectedGameObject == null)
         {
-            Debug.Log("Nothing selected");
             updateFirstSelected();
         }
     }
