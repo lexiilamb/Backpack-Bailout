@@ -8,6 +8,7 @@ public class NPCdialogue : MonoBehaviour
 
     //player and AJ
     GameObject player;
+    GameObject sally;
 
 
     public DialogueTrigger low;
@@ -50,11 +51,13 @@ public class NPCdialogue : MonoBehaviour
 
         //initiate player
         player = GameObject.FindGameObjectWithTag("Player");
+        sally = GameObject.Find("Sally");
     }
 
     // Update is called once per frame
     void Update()
     {
+
 		if(triggerExit)
         {
             StartCoroutine(TurnToOriginalPosition());
@@ -128,9 +131,13 @@ public class NPCdialogue : MonoBehaviour
             {
                 if (Input.GetButtonDown("Fire1"))
                 {
-                    // Initiate object rotation to face the player
-					StartCoroutine(TurnTowardsPlayer());
-					triggerExit = false;
+                    if(!(this.gameObject.name == "Sally"))
+                    {
+                        // Initiate object rotation to face the player
+                        StartCoroutine(TurnTowardsPlayer());
+                        triggerExit = false;
+                    }
+
 
                     // Hide push to talk message after beginning conversation
                     pushToTalk.gameObject.SetActive(false);
@@ -208,8 +215,15 @@ public class NPCdialogue : MonoBehaviour
         // End dialogue upon player exit
         if (collision.gameObject.tag == "Player")
         {
-            triggerExit = true;
-			
+            if (this.gameObject.name == "Sally")
+            {
+                triggerExit = false;
+            }
+            else
+            {
+                triggerExit = true;
+            }
+
             pushToTalk.gameObject.SetActive(false);
             FindObjectOfType<DialogueManager>().EndDialogue();
             continueTalking = true;
