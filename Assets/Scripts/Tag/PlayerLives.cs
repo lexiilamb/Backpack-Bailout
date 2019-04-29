@@ -32,16 +32,16 @@ public class PlayerLives : MonoBehaviour
     {
         if(resetPlayer)
         {
+            resetPlayer = false;
             coroutine = RemoveLife();
             StartCoroutine(coroutine);
-            resetPlayer = false;
         }
 
         if (endGame)
         {
+            endGame = false;
             EndCroutine = EndGame();
             StartCoroutine(EndCroutine);
-            endGame = false;
         }
 
         // Check if game over
