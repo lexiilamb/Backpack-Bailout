@@ -47,6 +47,9 @@ public class standingAJ : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		//Get AJ's original Rotation Params
+        originalRotation = transform.rotation;
+		
         // Indecies for categores
         indexArray = new int[] { tabletsIndex, calculatorsIndex, notebooksIndex, laptopsIndex };
         activeArray = new bool[typesOfObjects];
@@ -61,7 +64,14 @@ public class standingAJ : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (triggerExit)
+        {
+            StartCoroutine(TurnToOriginalPosition());
+        }
+        else
+        {
+            StopCoroutine(TurnToOriginalPosition());
+        }
     }
 
     public bool checkIfAllCategoriesCollected()
@@ -114,18 +124,49 @@ public class standingAJ : MonoBehaviour
         yield return new WaitForSeconds(1);
         continueTalking = true;
     }
+	
+	IEnumerator TurnTowardsPlayer()
+    {
+        Vector3 playerPosition = player.transform.position;
+        Vector3 npcCurrentPosition = transform.position;
+
+        Quaternion targetRotation = Quaternion.LookRotation(playerPosition - npcCurrentPosition);
+
+        //keep rotating while the NPC is not facing the player
+        while (transform.rotation != targetRotation)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(3.0f);
+    }
+
+    IEnumerator TurnToOriginalPosition()
+    {
+        //keep rotating while the NPC is not facing the player
+        while (transform.rotation != originalRotation)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, originalRotation, rotationSpeed * Time.deltaTime);
+            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(3.0f);
+    }
 
     void OnTriggerEnter(Collider collision)
     {
         // Prompt player to hit "Fire1" (left ctrl) to start dialogue
         if (collision.gameObject.tag == "Player")
         {
-
             pushToTalk.gameObject.SetActive(true);
             StopAllCoroutines();
         }
     }
-
 
     void OnTriggerStay(Collider collision)
     {
@@ -134,9 +175,9 @@ public class standingAJ : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                //look at the player 
-                AJ.transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
-
+                // Initiate object rotation to face the player
+                StartCoroutine(TurnTowardsPlayer());
+                triggerExit = false;
 
                 // Hide push to talk message after beginning conversation
                 pushToTalk.gameObject.SetActive(false);
@@ -225,6 +266,9 @@ public class standingAJ : MonoBehaviour
         // End dialogue upon player exit
         if (collision.gameObject.tag == "Player")
         {
+			// Used to initiate TurnToOriginalPosition Coroutine
+            triggerExit = true;
+			
             pushToTalk.gameObject.SetActive(false);
             FindObjectOfType<DialogueManager>().EndDialogue();
             continueTalking = true;

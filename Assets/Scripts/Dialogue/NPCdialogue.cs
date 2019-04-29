@@ -8,8 +8,6 @@ public class NPCdialogue : MonoBehaviour
 
     //player and AJ
     GameObject player;
-    GameObject NPC;
-    GameObject NoticeBoard;
 
 
     public DialogueTrigger low;
@@ -33,6 +31,9 @@ public class NPCdialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		//store NPC original rotation
+        originalRotation = transform.rotation;
+		
         // Get karma score from main player
         karma = GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().count;
         difficulty = GameDifficulty.gameDifficulty;
@@ -59,13 +60,20 @@ public class NPCdialogue : MonoBehaviour
 
         //initiate player
         player = GameObject.FindGameObjectWithTag("Player");
-        NPC = GameObject.FindGameObjectWithTag("NPC");
-        NoticeBoard = GameObject.FindGameObjectWithTag("NoticeBoard");
     }
 
     // Update is called once per frame
     void Update()
     {
+		if(triggerExit)
+        {
+            StartCoroutine(TurnToOriginalPosition());
+        }
+        else
+        {
+            StopCoroutine(TurnToOriginalPosition());
+        }
+		
         // Update karma score from main player
         karma = GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().count;
         finishedDialogue = dialogueManger.finished;
@@ -76,6 +84,39 @@ public class NPCdialogue : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         continueTalking = true;
+    }
+	
+	IEnumerator TurnTowardsPlayer()
+    {
+        Vector3 playerPosition = player.transform.position;
+        Vector3 npcCurrentPosition = transform.position;
+
+        Quaternion targetRotation = Quaternion.LookRotation(playerPosition - npcCurrentPosition);
+
+        //keep rotating while the NPC is not facing the player
+        while(transform.rotation != targetRotation)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(3.0f);
+    }
+
+    IEnumerator TurnToOriginalPosition()
+    {
+        //keep rotating while the NPC is not facing the player
+        while (transform.rotation != originalRotation)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, originalRotation, rotationSpeed * Time.deltaTime);
+            transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+          
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(3.0f);
     }
 
     void OnTriggerEnter(Collider collision)
@@ -97,8 +138,9 @@ public class NPCdialogue : MonoBehaviour
             {
                 if (Input.GetButtonDown("Fire1"))
                 {
-                    //look at the player 
-                    NPC.transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
+                    // Initiate object rotation to face the player
+					StartCoroutine(TurnTowardsPlayer());
+					triggerExit = false;
 
                     // Hide push to talk message after beginning conversation
                     pushToTalk.gameObject.SetActive(false);
@@ -143,7 +185,6 @@ public class NPCdialogue : MonoBehaviour
                             // if collosion.karam < karmaNeededToProceed
                             if (karma > karmaNeededToProceed)
                             {
-
                                 if (gameObject.tag == "Claire")
                                 {
                                     GameObject.FindWithTag("Player").GetComponent<PlayerBehavior>().claireAskedForHelp = true;
@@ -177,10 +218,8 @@ public class NPCdialogue : MonoBehaviour
         // End dialogue upon player exit
         if (collision.gameObject.tag == "Player")
         {
-            //go back to original position
-            NPC.transform.LookAt(new Vector3(NoticeBoard.transform.position.x, transform.position.y, NoticeBoard.transform.position.z));
-
-
+            triggerExit = true;
+			
             pushToTalk.gameObject.SetActive(false);
             FindObjectOfType<DialogueManager>().EndDialogue();
             continueTalking = true;
