@@ -1301,7 +1301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4523352616317060, guid: c04238e3862a397449fb9f3ca8b229aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4523352616317060, guid: c04238e3862a397449fb9f3ca8b229aa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2094,7 +2094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 691402767, guid: f9622e60ef34abe46b4e3e8a73b8cf35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9768529
+      value: -2.116211
       objectReference: {fileID: 0}
     - target: {fileID: 691402767, guid: f9622e60ef34abe46b4e3e8a73b8cf35, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2102,7 +2102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 691402767, guid: f9622e60ef34abe46b4e3e8a73b8cf35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.138876
+      value: 11.750244
       objectReference: {fileID: 0}
     - target: {fileID: 691402767, guid: f9622e60ef34abe46b4e3e8a73b8cf35, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2110,7 +2110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 691402767, guid: f9622e60ef34abe46b4e3e8a73b8cf35, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.92463493
+      value: 0.91113144
       objectReference: {fileID: 0}
     - target: {fileID: 691402767, guid: f9622e60ef34abe46b4e3e8a73b8cf35, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2118,7 +2118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 691402767, guid: f9622e60ef34abe46b4e3e8a73b8cf35, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.38085455
+      value: 0.41211575
       objectReference: {fileID: 0}
     - target: {fileID: 691402767, guid: f9622e60ef34abe46b4e3e8a73b8cf35, type: 3}
       propertyPath: m_RootOrder
@@ -2130,7 +2130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 691402767, guid: f9622e60ef34abe46b4e3e8a73b8cf35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 135.227
+      value: 131.324
       objectReference: {fileID: 0}
     - target: {fileID: 691402767, guid: f9622e60ef34abe46b4e3e8a73b8cf35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2391,7 +2391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 37152621, guid: caae093fd0266234198b38c25ab66e1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.022999756
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 37152621, guid: caae093fd0266234198b38c25ab66e1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4600,7 +4600,7 @@ MonoBehaviour:
   dialogue:
     name: AJ
     sentences:
-    - Oh shoot, I have to go clean the Administration room.
+    - I shoot, I'm going to be late for cleaning duty.
     - Sorry, I'm in a rush. I heard Claire wanted you for something though.
 --- !u!1001 &1235708418
 PrefabInstance:
@@ -4615,7 +4615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4202392846036742, guid: 9183174da29af27489188e29c25feb74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4202392846036742, guid: 9183174da29af27489188e29c25feb74, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5885,7 +5885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4447848867235440, guid: 83dd3cce9a26aaa49b8ec8d1e5de990c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4447848867235440, guid: 83dd3cce9a26aaa49b8ec8d1e5de990c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7362,6 +7362,7 @@ MonoBehaviour:
     name: Sally
     sentences:
     - Claire said she was looking for you.
+    - Now go away!
 --- !u!114 &2035943671
 MonoBehaviour:
   m_ObjectHideFlags: 0
